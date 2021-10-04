@@ -3,7 +3,9 @@
 
 ## Referências do curso
 
-<!-- [Clique aqui](https://github.com/curso-r/main-r4ds-1/raw/master/material_do_curso.zip) para baixar o material do curso. -->
+-   [Clique
+    aqui](https://github.com/curso-r/main-r4ds-1/raw/master/material_do_curso.zip)
+    para baixar o material do curso.
 
 -   R for Data Science: <https://r4ds.had.co.nz/> (em inglês) e
     <https://es.r4ds.hadley.nz/> (em espanhol).
