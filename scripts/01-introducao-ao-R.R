@@ -230,12 +230,27 @@ class(imdb)
 # Como vemos a classe de uma coluna?
 # Como acessar as colunas de uma base?
 
+resultado <- 1+1
+
+resultado+1
+resultado+2
+
+imdb <- read.csv("dados/imdb.csv")
+
+
+
+
+
+nrow()
+
 # Vetores -----------------------------------------------------------------
 
 # Vetores são conjuntos de valores
 
-vetor1 <- c(1, 4, 3, 10)
-vetor2 <- c("a", "b", "z")
+help(c)
+
+vetor1 <- c(1, 4, 3.1, 10, 5, 7, 9)
+vetor2 <- c("a", "b", "z", "fernando")
 
 vetor1
 vetor2
@@ -256,6 +271,8 @@ vetor2
 mtcars$mpg
 imdb$titulo
 
+imdb <- read.csv("dados/imdb.csv")
+
 class(mtcars$mpg)
 class(imdb$titulo)
 
@@ -268,6 +285,8 @@ class(imdb$titulo)
 vetor1 <- c(1, 5, 3, -10)
 vetor2 <- c("a", "b", "c")
 
+vetor1 <- c(1L, 5L)
+
 class(vetor1)
 class(vetor2)
 
@@ -279,11 +298,26 @@ vetor <- c(1, 2, "a")
 vetor
 class(vetor)
 
+# esse vetor é igual a
+vetor_sem_coercao <- c("1", "2", "a")
+
+vetor_de_numeros <- c(2, 1L)
+
+class(vetor_de_numeros)
+
 # character > numeric > integer > logical
 
 # coerções forçadas por você
+texto_para_logico <- as.logical("TRUE")
+
+class(texto_para_logico)
+
 as.numeric(c(TRUE, FALSE, FALSE))
 as.character(c(TRUE, FALSE, FALSE))
+
+as.numeric(c("1", "2", "3"))
+
+as.numeric("1a")
 
 # Por consquência, cada coluna de uma base 
 # guarda valores de apenas uma classe.
@@ -297,6 +331,8 @@ vetor - 1
 vetor / 2
 vetor * 10
 
+vetor_sem_coercao + 1
+
 # Você também pode fazer operações que envolvem mais de um vetor:
 
 vetor1 <- c(1, 2, 3)
@@ -309,9 +345,17 @@ vetor1  + vetor2
 # Para instalar pacotes
 
 install.packages("tidyverse")
+
 library(tidyverse)
 library(dplyr)
 
 # Também é possível acessar as funções usando ::
+
+# As formas de escrever são equivalentes:
+# readr::read_csv("dados/imdb.csv")
+
+# library(readr)
+# read_csv("dados/imdb.csv")
+
 dplyr::filter_at()
 dplyr::transmute()
