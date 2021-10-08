@@ -52,16 +52,24 @@ library(readxl)
 imdb_excel <- read_excel("dados/imdb.xlsx")
 excel_sheets("dados/imdb.xlsx")
 
+# quando queremos importar dados de uma aba específica
+imdb_excel <- read_excel("dados/imdb.xlsx", sheet = "Sheet1" )
+
 # Salvando dados ----------------------------------------------------------
 
 # As funções iniciam com 'write'
 
+# criar a pasta dados_output/
+fs::dir_create("dados_output/")
+
 # CSV
-write_csv(imdb, file = "imdb.csv")
+write_csv(imdb_csv, file = "dados_output/imdb.csv")
+
+write_csv2(imdb_csv, file = "dados_output/imdb2.csv")
 
 # Excel
 library(writexl)
-write_xlsx(imdb, path = "imdb.xlsx")
+write_xlsx(imdb_csv, path = "dados_output/imdb.xlsx")
 
 # O formato rds -----------------------------------------------------------
 
