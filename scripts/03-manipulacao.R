@@ -11,6 +11,7 @@ imdb <- read_rds("dados/imdb.rds")
 glimpse(imdb)
 names(imdb)
 View(imdb)
+head(imdb)
 
 # dplyr: 6 verbos principais
 # select()    # seleciona colunas do data.frame
@@ -18,11 +19,11 @@ View(imdb)
 # arrange()   # reordena as linhas do data.frame
 # mutate()    # cria novas colunas no data.frame (ou atualiza as colunas existentes)
 # summarise() + group_by() # sumariza o data.frame
-# left_join   # junta dois data.frames
+# left_join()   # junta dois data.frames
 
 # select ------------------------------------------------------------------
 
-# Selcionando uma coluna da base
+# Selecionando uma coluna da base
 
 select(imdb, titulo)
 
@@ -30,16 +31,25 @@ select(imdb, titulo)
 
 imdb
 
+# só vai salvar se usar a atribuição <-
+titulo_dos_filmes <- select(imdb, titulo)
+
 # Selecionando várias colunas
 
 select(imdb, titulo, ano, orcamento)
+
+# use o : para fazer sequencias
+1:10
 
 select(imdb, titulo:cor)
 
 # Funções auxiliares
 
 select(imdb, starts_with("ator"))
-select(imdb, contains("to"))
+
+select(imdb, contains("or"))
+
+select(imdb, ends_with("or"))
 
 # Principais funções auxiliares
 
@@ -49,29 +59,46 @@ select(imdb, contains("to"))
 
 # Selecionando colunas por exclusão
 
+select(imdb, -titulo)
+
 select(imdb, -starts_with("ator"), -titulo, -ends_with("s"))
+
+#  cuidado ao misturar o - e o +
+select(imdb, -diretor, cor)
 
 # arrange -----------------------------------------------------------------
 
 # Ordenando linhas de forma crescente de acordo com 
 # os valores de uma coluna
 
-arrange(imdb, orcamento)
+arrange(imdb, ano)
 
 # Agora de forma decrescente
 
-arrange(imdb, desc(orcamento))
+arrange(imdb, desc(ano))
 
 # Ordenando de acordo com os valores 
 # de duas colunas
 
-arrange(imdb, desc(ano), orcamento)
+arrange(imdb, desc(ano), desc(duracao))
 
 # O que acontece com o NA?
 
 df <- tibble(x = c(NA, 2, 1), y = c(1, 2, 3))
 arrange(df, x)
 arrange(df, desc(x))
+
+# usando tudo junto
+
+filmes_por_ano <- select(imdb, titulo, ano)
+
+filmes_ordenados_por_ano <- arrange(filmes_por_ano, ano)
+
+View(filmes_ordenados_por_ano)
+
+# Usando funções aninhadas
+
+View(arrange(select(imdb, titulo, ano), ano))
 
 # Pipe (%>%) --------------------------------------------------------------
 
@@ -81,6 +108,7 @@ arrange(df, desc(x))
 # g(f(x)) = x %>% f() %>% g()
 
 x %>% f() %>% g()   # CERTO
+
 x %>% f(x) %>% g(x) # ERRADO
 
 # Receita de bolo sem pipe. 
@@ -122,17 +150,32 @@ recipiente(rep("farinha", 2), "água", "fermento", "leite", "óleo") %>%
 
 # ATALHO DO %>%: CTRL (command) + SHIFT + M
 
+imdb_filmes_com_pipe <- imdb %>% 
+  select(titulo, ano) %>% 
+  arrange(ano) %>% 
+  view()
+
+imdb_filmes_com_pipe
+
+View(imdb) # é do R base, não deixa salvar, salva como NULL
+
+view() # faz parte do tidyverse, podemos salvar o resultado
+
 # Conceitos importantes para filtros! --------------------------------------
 
 ## Comparações lógicas -------------------------------
 
-# Testes com resultado verdadeiro
+x <- 1
+
+# Testes com resultado verdadeiro - TRUE
 x == 1
+
 "a" == "a"
 
-# Testes com resultado falso
+# Testes com resultado falso - FALSE
 x == 2
 "a" == "b"
+"a" == "A"
 
 # Maior
 x > 3
@@ -163,7 +206,7 @@ x %in% c(1, 2, 3)
 # precisam resultar em TRUE
 
 x <- 5
-x >= 3 & x <=7
+x >= 3 & x <= 7
 
 
 y <- 2
@@ -189,21 +232,35 @@ y >= 3 | y == 0
 w <- 5
 (!w < 4)
 
+
 # filter ------------------------------------------------------------------
 
+filter(imdb, ano >= 2010)
+
 # Filtrando uma coluna da base
-imdb %>% filter(nota_imdb > 9)
+imdb %>% filter(ano >= 2010)
 imdb %>% filter(diretor == "Quentin Tarantino")
+
+# pergunta do Pedro
+imdb %>% filter(diretor %in% c("Quentin Tarantino", 
+                               "quentin tarantino"))
 
 # Vendo categorias de uma variável
 unique(imdb$cor) # saída é um vetor
 imdb %>% distinct(cor) # saída é uma tibble
 
+imdb %>% distinct(diretor)
+
 # Filtrando duas colunas da base
 
 ## Recentes e com nota alta
-imdb %>% filter(ano > 2010, nota_imdb > 8.5)
-imdb %>% filter(ano > 2010 & nota_imdb > 8.5)
+imdb %>% 
+  select(titulo, ano, nota_imdb) %>% 
+  filter(ano > 2010, nota_imdb > 8.5)
+
+imdb %>% 
+  select(titulo, ano, nota_imdb) %>% 
+  filter(ano > 2010 & nota_imdb > 8.5)
 
 ## Gastaram menos de 100 mil, faturaram mais de 1 milhão
 imdb %>% filter(orcamento < 100000, receita > 1000000)
@@ -215,16 +272,18 @@ imdb %>% filter(receita - orcamento > 0)
 imdb %>% filter(receita - orcamento > 500000000 | nota_imdb > 9)
 
 # O operador %in%
-imdb %>% filter(ator_1 %in% c('Angelina Jolie Pitt', "Brad Pitt"))
+imdb %>% filter(ator_1 %in% c('Angelina Jolie Pitt', "Brad Pitt")) %>% View()
 
 # Negação
-imdb %>% filter(diretor %in% c("Quentin Tarantino", "Steven Spielberg"))
-imdb %>% filter(!diretor %in% c("Quentin Tarantino", "Steven Spielberg"))
+imdb %>% filter(diretor %in% c("Quentin Tarantino", "Steven Spielberg"))  %>% View()
+imdb %>% filter(!diretor %in% c("Quentin Tarantino", "Steven Spielberg"))  %>% View()
 
 # O que acontece com o NA?
 df <- tibble(x = c(1, NA, 3))
 
 filter(df, x > 1)
+
+# como manter os NAs quando filtrar
 filter(df, is.na(x) | x > 1)
 
 # Filtrando texto sem correspondência exata
@@ -243,8 +302,9 @@ str_detect(
 
 ## Pegando apenas os filmes que 
 ## tenham o gênero ação
-imdb %>% filter(str_detect(generos, "Action"))
+imdb %>% filter(str_detect(generos, "Action")) %>% View()
 
+# Falamos até aqui em 14/10
 # mutate ------------------------------------------------------------------
 
 # Modificando uma coluna
