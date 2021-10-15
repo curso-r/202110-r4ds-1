@@ -427,3 +427,17 @@ band_instruments %>% right_join(band_members)
 band_instruments %>% inner_join(band_members)
 band_instruments %>% full_join(band_members)
 
+
+# DUVIDAS---
+# O summary mostra as categorias em dados categóricos?
+summary(imdb)
+
+# com summary - precisa converter para factor
+imdb_2 <- imdb %>% 
+  mutate(cor_categoria = forcats::as_factor(cor))
+
+summary(imdb_2)
+
+# com count não precisa converter!
+imdb %>% 
+  count(cor)
