@@ -28,6 +28,7 @@ Fora do horário de aula ou monitoria:
 | slides/01-introducao-ao-curso.html | <https://curso-r.github.io/main-r4ds-1/slides/01-introducao-ao-curso.html> |
 | slides/02-introducao-ao-r.html     | <https://curso-r.github.io/main-r4ds-1/slides/02-introducao-ao-r.html>     |
 | slides/03-importacao.html          | <https://curso-r.github.io/main-r4ds-1/slides/03-importacao.html>          |
+| slides/04-manipulacao.html         | <https://curso-r.github.io/main-r4ds-1/slides/04-manipulacao.html>         |
 
 ## Scripts utilizados em aula
 
@@ -37,6 +38,7 @@ Fora do horário de aula ou monitoria:
 |:---------------------|:-----------------------------------------------------------------------|
 | 01-introducao-ao-R.R | <https://curso-r.github.io/202110-r4ds-1/scripts/01-introducao-ao-R.R> |
 | 02-importacao.R      | <https://curso-r.github.io/202110-r4ds-1/scripts/02-importacao.R>      |
+| 03-manipulacao.R     | <https://curso-r.github.io/202110-r4ds-1/scripts/03-manipulacao.R>     |
 
 ### Parte prática
 
@@ -55,6 +57,9 @@ Fora do horário de aula ou monitoria:
 |    1 | [Exercícios — Vetores](https://livro.curso-r.com/3-6-vetores.html#exerc%C3%ADcios-3)                     |
 |    2 | [Ler a seções 5.1, 5.2 e 5.3 do nosso livro](https://livro.curso-r.com/5-importacao.html)                |
 |    2 | [Exercícios — Importação](https://livro.curso-r.com/5-2-readr.html#exerc%C3%ADcios-9)                    |
+|    3 | [Exercícios — Selecionando colunas](https://livro.curso-r.com/7-2-dplyr.html#exerc%C3%ADcios-11)         |
+|    3 | [Exercícios — Ordenando a base](https://livro.curso-r.com/7-2-dplyr.html#exerc%C3%ADcios-12)             |
+|    3 | [Exercícios — Pipe](https://livro.curso-r.com/6-1-o-operador-pipe.html#exerc%C3%ADcios-10)               |
 
 ## Lição de casa extra 🤓
 
@@ -71,26 +76,31 @@ Referências extras comentadas nas aulas, ou materiais que comentamos
 quando tiramos dúvidas (não necessariamente são relacionadas com o
 conteúdo da aula).
 
-| Aula | Tema        | Descrição                                                                                                                                                         |
-|-----:|:------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    0 | Instalação  | [Capítulo do livro “Ciência de Dados em R”: Instalação](https://livro.curso-r.com/1-instalacao.html)                                                              |
-|    1 | Comunidades | [R-Ladies - Dashboard](https://benubah.github.io/r-community-explorer/rladies.html)                                                                               |
-|    1 | Comunidades | [Apresentação sobre a R-Ladies São Paulo](https://r-ladies-sao-paulo.github.io/RLadiesTheme/)                                                                     |
-|    1 | Comunidades | [AI Inclusive](https://www.ai-inclusive.org/)                                                                                                                     |
-|    1 | Comunidades | [Grupo de telegram R Brasil](https://t.me/rbrasiloficial)                                                                                                         |
-|    1 | Curso-R     | [Blog da Curso-R](https://blog.curso-r.com/)                                                                                                                      |
-|    1 | Curso-R     | [Canal no Youtube - Lives nas quartas-feiras às 20h](https://www.youtube.com/c/CursoR6/featured)                                                                  |
-|    1 | Curso-R     | [Materiais dos cursos](https://curso-r.com/material/)                                                                                                             |
-|    1 | Introdução  | [Folha de cola (cheatsheet): R Básico](https://rstudio.com/wp-content/uploads/2016/05/base-r.pdf)                                                                 |
-|    1 | Introdução  | [Folha de cola (cheatsheet): RStudio](https://raw.githubusercontent.com/rstudio/cheatsheets/master/translations/portuguese/rstudio-IDE-cheatsheet-portuguese.pdf) |
-|    1 | Introdução  | [Capítulo do livro “Ciência de Dados em R”: R Básico](https://livro.curso-r.com/3-r-base.html)                                                                    |
-|    1 | Introdução  | [Capítulo do livro “Ciência de Dados em R”: Pacotes](https://livro.curso-r.com/4-pacotes.html)                                                                    |
-|    2 | Importação  | [Capítulo do livro “Ciência de Dados em R”: Importação](https://livro.curso-r.com/5-importacao.html)                                                              |
-|    2 | Importação  | [Integração com banco de dados](https://youtu.be/Es8H2LjfikY)                                                                                                     |
-|    2 | Importação  | [Capítulo do livro “Zen do R”: Rproj e diretórios](https://curso-r.github.io/zen-do-r/rproj-dir.html)                                                             |
-|    2 | Importação  | [Folha de cola (cheatsheet): Importação](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)                                            |
-|    2 | Dúvidas     | [Base dos dados](https://basedosdados.org/)                                                                                                                       |
-|    2 | Dúvidas     | [Post sobre o base dos dados](https://blog.curso-r.com/posts/2021-05-28-basedosdados/)                                                                            |
+| Aula | Tema                 | Descrição                                                                                                                                                          |
+|-----:|:---------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|    0 | Instalação           | [Capítulo do livro “Ciência de Dados em R”: Instalação](https://livro.curso-r.com/1-instalacao.html)                                                               |
+|    1 | Comunidades          | [R-Ladies - Dashboard](https://benubah.github.io/r-community-explorer/rladies.html)                                                                                |
+|    1 | Comunidades          | [Apresentação sobre a R-Ladies São Paulo](https://r-ladies-sao-paulo.github.io/RLadiesTheme/)                                                                      |
+|    1 | Comunidades          | [AI Inclusive](https://www.ai-inclusive.org/)                                                                                                                      |
+|    1 | Comunidades          | [Grupo de telegram R Brasil](https://t.me/rbrasiloficial)                                                                                                          |
+|    1 | Curso-R              | [Blog da Curso-R](https://blog.curso-r.com/)                                                                                                                       |
+|    1 | Curso-R              | [Canal no Youtube - Lives nas quartas-feiras às 20h](https://www.youtube.com/c/CursoR6/featured)                                                                   |
+|    1 | Curso-R              | [Materiais dos cursos](https://curso-r.com/material/)                                                                                                              |
+|    1 | Introdução           | [Folha de cola (cheatsheet): R Básico](https://rstudio.com/wp-content/uploads/2016/05/base-r.pdf)                                                                  |
+|    1 | Introdução           | [Folha de cola (cheatsheet): RStudio](https://raw.githubusercontent.com/rstudio/cheatsheets/master/translations/portuguese/rstudio-IDE-cheatsheet-portuguese.pdf)  |
+|    1 | Introdução           | [Capítulo do livro “Ciência de Dados em R”: R Básico](https://livro.curso-r.com/3-r-base.html)                                                                     |
+|    1 | Introdução           | [Capítulo do livro “Ciência de Dados em R”: Pacotes](https://livro.curso-r.com/4-pacotes.html)                                                                     |
+|    2 | Importação           | [Capítulo do livro “Ciência de Dados em R”: Importação](https://livro.curso-r.com/5-importacao.html)                                                               |
+|    2 | Importação           | [Integração com banco de dados](https://youtu.be/Es8H2LjfikY)                                                                                                      |
+|    2 | Importação           | [Capítulo do livro “Zen do R”: Rproj e diretórios](https://curso-r.github.io/zen-do-r/rproj-dir.html)                                                              |
+|    2 | Importação           | [Folha de cola (cheatsheet): Importação](https://raw.githubusercontent.com/rstudio/cheatsheets/master/data-import.pdf)                                             |
+|    2 | Dúvidas              | [Base dos dados](https://basedosdados.org/)                                                                                                                        |
+|    2 | Dúvidas              | [Post sobre o base dos dados](https://blog.curso-r.com/posts/2021-05-28-basedosdados/)                                                                             |
+|    3 | Importação           | [Importação de dados do google sheets](https://googlesheets4.tidyverse.org/)                                                                                       |
+|    3 | Limpeza de bases     | [Post sobre o pacote janitor](https://blog.curso-r.com/posts/2017-07-24-janitor/)                                                                                  |
+|    3 | Manipulação de bases | [Capítulo do livro “Ciência de Dados em R”: Manipulação](https://livro.curso-r.com/7-manipulacao.html)                                                             |
+|    3 | Manipulação de bases | [Folha de cola (cheatsheet): dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/translations/portuguese/data-wrangling-cheatsheet-portuguese.pdf) |
+|    3 | Pipe                 | [Capítulo do livro “Ciência de Dados em R”: Pipe](https://livro.curso-r.com/6-pipe.html)                                                                           |
 
 ## Redes sociais da Curso-R
 
