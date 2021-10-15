@@ -42,10 +42,11 @@ Fora do horário de aula ou monitoria:
 
 ### Parte prática
 
-| script         | link                                                             |
-|:---------------|:-----------------------------------------------------------------|
-| 1-r-base.R     | <https://curso-r.github.io/202110-r4ds-1/pratica/1-r-base.R>     |
-| 2-importacao.R | <https://curso-r.github.io/202110-r4ds-1/pratica/2-importacao.R> |
+| script          | link                                                              |
+|:----------------|:------------------------------------------------------------------|
+| 1-r-base.R      | <https://curso-r.github.io/202110-r4ds-1/pratica/1-r-base.R>      |
+| 2-importacao.R  | <https://curso-r.github.io/202110-r4ds-1/pratica/2-importacao.R>  |
+| 2-manipulacao.R | <https://curso-r.github.io/202110-r4ds-1/pratica/2-manipulacao.R> |
 
 ## Lição de casa
 
