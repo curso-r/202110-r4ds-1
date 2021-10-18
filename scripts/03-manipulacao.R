@@ -309,6 +309,9 @@ imdb %>% filter(str_detect(generos, "Action")) %>% View()
 
 # Modificando uma coluna
 
+# mutate(imdb, ....)
+
+
 imdb %>% 
   mutate(duracao = duracao/60) %>% 
   View()
@@ -320,16 +323,25 @@ imdb %>%
   View()
 
 imdb %>% 
+  mutate(duracao_horas = duracao/60) %>% 
+  select(titulo:duracao, duracao_horas, cor:ator_3) %>% 
+  View()
+
+
+imdb %>% 
   mutate(lucro = receita - orcamento) %>% 
   View()
+
+imdb_com_lucro <- imdb %>% 
+  mutate(lucro = receita - orcamento) %>% 
+  view()
+
 
 # A função ifelse é uma ótima ferramenta
 # para fazermos classificação binária
 
-imdb %>% mutate(
-  lucro = receita - orcamento,
-  houve_lucro = ifelse(lucro > 0, "Sim", "Não")
-) %>% 
+imdb %>% mutate(lucro = receita - orcamento,
+                houve_lucro = ifelse(lucro > 0, "Sim", "Não")) %>%
   View()
 
 # summarise ---------------------------------------------------------------
@@ -353,16 +365,29 @@ imdb %>% summarise(
   media_orcamento = mean(orcamento, na.rm = TRUE),
   mediana_orcamento = median(orcamento, na.rm = TRUE),
   variancia_orcamento = var(orcamento, na.rm = TRUE)
+  # sd() = desvio padrao, min(), max()
 )
 
 # Tabela descritiva
-imdb %>% summarise(
+tabela_descritiva <- imdb %>% summarise(
   media_orcamento = mean(orcamento, na.rm = TRUE),
   media_receita = mean(receita, na.rm = TRUE),
   qtd = n(),
   qtd_diretores = n_distinct(diretor)
 )
 
+
+distinct(imdb, diretor)
+
+distinct(imdb, ator_1)
+
+# versao do R base
+unique(imdb$diretor)
+
+# exportanto a tabela descritiva
+
+write_csv2(tabela_descritiva,
+           "dados_output/tabela_descritiva.csv")
 
 # funcoes que transformam -> N valores
 log(1:10)
@@ -372,7 +397,7 @@ str_detect()
 # funcoes que sumarizam -> 1 valor
 mean(c(1, NA, 2))
 mean(c(1, NA, 2), na.rm = TRUE)
-n_distinct()
+n_distinct(imdb$diretor)
 
 
 # group_by + summarise ----------------------------------------------------
@@ -389,7 +414,20 @@ imdb %>%
     media_receita = mean(receita, na.rm = TRUE),
     qtd = n(),
     qtd_diretores = n_distinct(diretor)
-  )
+  ) %>% View()
+
+imdb %>% 
+  group_by(generos) %>% 
+  summarise(n = n()) %>% 
+  View()
+
+imdb %>% 
+  count(generos) %>% 
+  View()
+
+imdb %>% 
+  count(diretor, ano) %>% 
+  View()
 
 # left join ---------------------------------------------------------------
 
@@ -399,6 +437,7 @@ imdb %>%
 
 band_members
 band_instruments
+
 
 band_members %>% left_join(band_instruments)
 band_instruments %>% left_join(band_members)
@@ -413,7 +452,7 @@ depara_cores <- tibble(
   cor_em_ptBR = c("colorido", "preto e branco")
 )
 
-left_join(imdb, depara_cores, by = c("cor")) 
+left_join(imdb, depara_cores, by = c("cor")) %>% View()
 
 imdb %>% 
   left_join(depara_cores, by = c("cor")) %>% 
@@ -426,6 +465,7 @@ band_instruments %>% left_join(band_members)
 band_instruments %>% right_join(band_members)
 band_instruments %>% inner_join(band_members)
 band_instruments %>% full_join(band_members)
+band_instruments %>% anti_join(band_members)
 
 
 # DUVIDAS---
