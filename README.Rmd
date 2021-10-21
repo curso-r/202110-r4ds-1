@@ -15,7 +15,7 @@ library(magrittr)
 
 main_repo <- "main-r4ds-1"
 turma <- "202110-r4ds-1"
-num_aula <- 3
+num_aula <- 4
 ```
 
 ## Referências do curso

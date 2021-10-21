@@ -50,17 +50,20 @@ Fora do horário de aula ou monitoria:
 
 ## Lição de casa
 
-| Aula | Descrição                                                                                                |
-|-----:|:---------------------------------------------------------------------------------------------------------|
-|    1 | [Exercícios — R como calculadora](https://livro.curso-r.com/3-2-r-como-calculadora.html#exerc%C3%ADcios) |
-|    1 | [Exercícios — Objetos](https://livro.curso-r.com/3-3-objetosfuncoes#exerc%C3%ADcios-1)                   |
-|    1 | [Ler a seção Vetores do nosso livro](https://livro.curso-r.com/3-6-vetores.html)                         |
-|    1 | [Exercícios — Vetores](https://livro.curso-r.com/3-6-vetores.html#exerc%C3%ADcios-3)                     |
-|    2 | [Ler a seções 5.1, 5.2 e 5.3 do nosso livro](https://livro.curso-r.com/5-importacao.html)                |
-|    2 | [Exercícios — Importação](https://livro.curso-r.com/5-2-readr.html#exerc%C3%ADcios-9)                    |
-|    3 | [Exercícios — Selecionando colunas](https://livro.curso-r.com/7-2-dplyr.html#exerc%C3%ADcios-11)         |
-|    3 | [Exercícios — Ordenando a base](https://livro.curso-r.com/7-2-dplyr.html#exerc%C3%ADcios-12)             |
-|    3 | [Exercícios — Pipe](https://livro.curso-r.com/6-1-o-operador-pipe.html#exerc%C3%ADcios-10)               |
+| Aula | Descrição                                                                                                                |
+|-----:|:-------------------------------------------------------------------------------------------------------------------------|
+|    1 | [Exercícios — R como calculadora](https://livro.curso-r.com/3-2-r-como-calculadora.html#exerc%C3%ADcios)                 |
+|    1 | [Exercícios — Objetos](https://livro.curso-r.com/3-3-objetosfuncoes#exerc%C3%ADcios-1)                                   |
+|    1 | [Ler a seção Vetores do nosso livro](https://livro.curso-r.com/3-6-vetores.html)                                         |
+|    1 | [Exercícios — Vetores](https://livro.curso-r.com/3-6-vetores.html#exerc%C3%ADcios-3)                                     |
+|    2 | [Ler a seções 5.1, 5.2 e 5.3 do nosso livro](https://livro.curso-r.com/5-importacao.html)                                |
+|    2 | [Exercícios — Importação](https://livro.curso-r.com/5-2-readr.html#exerc%C3%ADcios-9)                                    |
+|    3 | [Exercícios — Selecionando colunas](https://livro.curso-r.com/7-2-dplyr.html#exerc%C3%ADcios-11)                         |
+|    3 | [Exercícios — Ordenando a base](https://livro.curso-r.com/7-2-dplyr.html#exerc%C3%ADcios-12)                             |
+|    3 | [Exercícios — Pipe](https://livro.curso-r.com/6-1-o-operador-pipe.html#exerc%C3%ADcios-10)                               |
+|    4 | [Exercícios — Criando/modificando colunas](https://livro.curso-r.com/7-2-dplyr.html#modificando-e-criando-novas-colunas) |
+|    4 | [Exercícios — Sumarizando a base](https://livro.curso-r.com/7-2-dplyr.html#summarisando-a-base)                          |
+|    4 | [Exercícios — Joins](https://livro.curso-r.com/7-2-dplyr.html#juntando-duas-bases)                                       |
 
 ## Lição de casa extra 🤓
 
@@ -102,6 +105,20 @@ conteúdo da aula).
 |    3 | Manipulação de bases | [Capítulo do livro “Ciência de Dados em R”: Manipulação](https://livro.curso-r.com/7-manipulacao.html)                                                             |
 |    3 | Manipulação de bases | [Folha de cola (cheatsheet): dplyr](https://raw.githubusercontent.com/rstudio/cheatsheets/master/translations/portuguese/data-wrangling-cheatsheet-portuguese.pdf) |
 |    3 | Pipe                 | [Capítulo do livro “Ciência de Dados em R”: Pipe](https://livro.curso-r.com/6-pipe.html)                                                                           |
+|    4 | Fatores              | [Folha de cola (cheatsheet): forcats](https://raw.githubusercontent.com/rstudio/cheatsheets/master/factors.pdf)                                                    |
+|    4 | Joins - Unindo bases | [Joins: juntando bases de dados](https://youtu.be/xnUo25VRH70)                                                                                                     |
+|    4 | Joins - Unindo bases | [Tidyexplain - Ilustrações sobre joins](https://www.garrickadenbuie.com/project/tidyexplain/)                                                                      |
+|    4 | Joins - Unindo bases | [Documentação sobre joins](https://dplyr.tidyverse.org/reference/join.html)                                                                                        |
+|    4 | Joins - Unindo bases | [Post que usa join com bases com chave desarrumada](https://beatrizmilz.com/blog/2020-07-27-criando-mapas-com-os-pacotes-tidyverse-e-geobr/)                       |
+|    4 | Manipulação de bases | [Animações sobre dplyr + Join](https://www.garrickadenbuie.com/project/tidyexplain/)                                                                               |
+|    4 | Manipulação de bases | [Pacote abjutils - Remover acentos de textos](https://github.com/abjur/abjutils)                                                                                   |
+|    4 | Manipulação de bases | [Pacote dbplyr: dplyr para quem usa SQL](https://dbplyr.tidyverse.org/articles/translation-verb.html)                                                              |
+|    4 | Joins - Unindo bases | [imagem sobre join](https://d33wubrfki0l68.cloudfront.net/aeab386461820b029b7e7606ccff1286f623bae1/ef0d4/diagrams/join-venn.png)                                   |
+|    4 | Referências gerais   | [Guia de estilo: Tidyverse](https://style.tidyverse.org/)                                                                                                          |
+|    4 | Dúvidas              | [Pacote tidylog](https://github.com/elbersb/tidylog)                                                                                                               |
+|    4 | Dúvidas              | [Fatiar a base de dados com slice](https://dplyr.tidyverse.org/reference/slice.html)                                                                               |
+|    4 | Dúvidas              | [Formatando resultados de regressão: stargazer](https://anderlerv.netlify.app/tabelas-com-stargazer/10/2018/)                                                      |
+|    4 | Dúvidas              | [Formatando resultados de modelos: broom](https://cran.r-project.org/web/packages/broom/vignettes/broom.html)                                                      |
 
 ## Redes sociais da Curso-R
 
