@@ -108,7 +108,11 @@ imdb %>%
 
 # Nota média do Robert De Niro por ano
 
+# FAZER NO COMEÇO DA AULA  DO DIA 25/10
+
 # Colocando pontos no gráfico
+
+# FAZER NO COMEÇO DA AULA  DO DIA 25/10
 
 # Gráfico de barras -------------------------------------------------------
 
@@ -140,6 +144,24 @@ imdb %>%
 # Invertendo as coordenadas
   
 # Ordenando as barras
+
+library(tidyr)
+library(forcats)
+
+imdb %>% 
+  drop_na(diretor) %>% 
+  count(diretor, sort = TRUE) %>% 
+  head(10) %>% 
+  mutate(diretor_fator = fct_reorder(diretor, n)) %>% 
+  ggplot() +
+  geom_col(aes(y = diretor_fator, x = n, fill = diretor_fator),
+           color = "gray",
+           alpha = 1,
+           show.legend = FALSE) +
+  scale_fill_viridis_d() +
+  theme_light() +
+  labs(x = "Número de filmes", y = "Diretor")
+
 
 # Histogramas e boxplots --------------------------------------------------
 
