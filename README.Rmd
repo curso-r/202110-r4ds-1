@@ -15,7 +15,7 @@ library(magrittr)
 
 main_repo <- "main-r4ds-1"
 turma <- "202110-r4ds-1"
-num_aula <- 4
+num_aula <- 5
 ```
 
 ## Referências do curso
@@ -61,8 +61,7 @@ knitr::kable(
     slide = CursoRutils:::list_github_files(main_repo, "slides/", "html"),
     link = paste0("https://curso-r.github.io/", main_repo, "/", slide)
   ) %>%
-    dplyr::filter(!stringr::str_detect(slide, "_files/")) %>%
-    dplyr::slice(1:4)
+    dplyr::filter(!stringr::str_detect(slide, "_files/"))
 )
 ```
 
@@ -77,8 +76,7 @@ knitr::kable(
   tibble::tibble(
     script = list.files(pasta, pattern = "R$"),
     link = paste0("https://curso-r.github.io/", turma, "/", pasta, script)
-  ) %>%
-    dplyr::slice(1:3)
+  ) 
 )
 ```
 
