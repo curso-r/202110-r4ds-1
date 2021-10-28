@@ -44,12 +44,14 @@ Fora do horário de aula ou monitoria:
 
 ### Parte prática
 
-| script          | link                                                              |
-|:----------------|:------------------------------------------------------------------|
-| 1-r-base.R      | <https://curso-r.github.io/202110-r4ds-1/pratica/1-r-base.R>      |
-| 2-importacao.R  | <https://curso-r.github.io/202110-r4ds-1/pratica/2-importacao.R>  |
-| 2-manipulacao.R | <https://curso-r.github.io/202110-r4ds-1/pratica/2-manipulacao.R> |
-| 3-ggplot.R      | <https://curso-r.github.io/202110-r4ds-1/pratica/3-ggplot.R>      |
+| script                    | link                                                                        |
+|:--------------------------|:----------------------------------------------------------------------------|
+| 1-r-base.R                | <https://curso-r.github.io/202110-r4ds-1/pratica/1-r-base.R>                |
+| 2-importacao.R            | <https://curso-r.github.io/202110-r4ds-1/pratica/2-importacao.R>            |
+| 2-manipulacao.R           | <https://curso-r.github.io/202110-r4ds-1/pratica/2-manipulacao.R>           |
+| 3-ggplot-temas-variados.R | <https://curso-r.github.io/202110-r4ds-1/pratica/3-ggplot-temas-variados.R> |
+| 3-ggplot.R                | <https://curso-r.github.io/202110-r4ds-1/pratica/3-ggplot.R>                |
+| 4-base-dos-dados.R        | <https://curso-r.github.io/202110-r4ds-1/pratica/4-base-dos-dados.R>        |
 
 ## Lição de casa
 
