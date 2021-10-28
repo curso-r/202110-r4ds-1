@@ -18,7 +18,7 @@ starwars %>%
   geom_point(aes(x = mass, y = height, color = sex, size = height)) +
   labs(x = "Massa (kg)", y = "Altura (cm)", color = "Sexo",
        title = "Gráfico da relação entre altura e massa \n dos personagens"
-       ) +
+  ) +
   theme_light()
 
 
