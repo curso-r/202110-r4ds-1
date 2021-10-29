@@ -52,6 +52,7 @@ Fora do horário de aula ou monitoria:
 | 3-ggplot-temas-variados.R | <https://curso-r.github.io/202110-r4ds-1/pratica/3-ggplot-temas-variados.R> |
 | 3-ggplot.R                | <https://curso-r.github.io/202110-r4ds-1/pratica/3-ggplot.R>                |
 | 4-base-dos-dados.R        | <https://curso-r.github.io/202110-r4ds-1/pratica/4-base-dos-dados.R>        |
+| 5-grafico-extra-mapa.R    | <https://curso-r.github.io/202110-r4ds-1/pratica/5-grafico-extra-mapa.R>    |
 
 ## Lição de casa
 
