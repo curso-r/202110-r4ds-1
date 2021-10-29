@@ -1,0 +1,33 @@
+---
+title: "Untitled"
+author: "bia"
+date: "10/28/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+## gráfico interativo
+
+
+
+```{r }
+
+dados <- abjData::muni %>%
+  count(uf_sigla) %>%
+  mutate(uf_sigla = forcats::fct_reorder(uf_sigla, n))
+
+ggplot_ufs <- dados %>%
+  ggplot() +
+  geom_col(aes(x = n, y = uf_sigla)) +
+  theme_light()
+
+# transformar um objeto ggplot em um plotly
+plotly::ggplotly(ggplot_ufs)
+```
