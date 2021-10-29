@@ -1,0 +1,55 @@
+---
+title: "Municipio do Brasil"
+author: "Document Author"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+Estamos fazendo nossa análise com os dados da [Associação Basileira de Jurimetria](https://abj.org.br/)
+
+```{r fig.align='center', out.width="30%"}
+# knitr::include_graphics("abj.png")
+knitr::include_graphics("https://abj.org.br/assets/logo-home.png")
+```
+```{r, message=FALSE}
+library(dplyr)
+library(ggplot2)
+```
+
+
+```{r}
+dados_muni <- abjData::muni
+n_muni <- nrow(dados_muni)
+```
+
+Existem `r n_muni` municipios no Brasil. Segue abaixo as 10 UFs com mais número de municipios.
+
+```{r}
+dados_estados <- dados_muni %>% 
+  count(uf_sigla)  
+
+dados_estados %>% 
+  slice_max(n, n = 10) %>% 
+  rename(UF = uf_sigla, `Número de municipios` = n) %>% 
+  knitr::kable()
+```
+
+```{r include=FALSE}
+sf_state <- geobr::read_state()
+```
+
+
+```{r}
+dados_estados %>% 
+  left_join(sf_state, by = c("uf_sigla" = "abbrev_state")) %>% 
+   ggplot()+
+  geom_sf(aes(geometry = geom, fill = n))
+```
+
