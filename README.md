@@ -52,7 +52,9 @@ Fora do horário de aula ou monitoria:
 | 3-ggplot-temas-variados.R | <https://curso-r.github.io/202110-r4ds-1/pratica/3-ggplot-temas-variados.R> |
 | 3-ggplot.R                | <https://curso-r.github.io/202110-r4ds-1/pratica/3-ggplot.R>                |
 | 4-base-dos-dados.R        | <https://curso-r.github.io/202110-r4ds-1/pratica/4-base-dos-dados.R>        |
+| 5-exemplo-rmd.Rmd         | <https://curso-r.github.io/202110-r4ds-1/pratica/5-exemplo-rmd.Rmd>         |
 | 5-grafico-extra-mapa.R    | <https://curso-r.github.io/202110-r4ds-1/pratica/5-grafico-extra-mapa.R>    |
+| 5-html_prettydoc.Rmd      | <https://curso-r.github.io/202110-r4ds-1/pratica/5-html_prettydoc.Rmd>      |
 
 ## Lição de casa
 
@@ -138,6 +140,48 @@ conteúdo da aula).
 |    5 | Gráficos             | [Especificações aestéticas do ggplot2](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)                                                                                 |
 |    5 | Gráficos             | [Vignette do dplyr - introdução](https://dplyr.tidyverse.org/articles/dplyr.html)                                                                                                 |
 |    5 | Gráficos             | [Vignette do ggplot - Especificações do aes()](https://ggplot2.tidyverse.org/articles/ggplot2-specs.html)                                                                         |
+|    6 | Dúvidas Discourse    | [Representação gráfica do modelo de regressão linear](https://discourse.curso-r.com/t/representacao-grafica-do-modelo-de-regressao-linear/1021)                                   |
+|    6 | Dúvidas Discourse    | [Representar intervalo de confiança em um gráfico com ggplot2](https://discourse.curso-r.com/t/representar-intervalo-de-confianca-em-um-grafico-com-ggplot2/1022)                 |
+|    6 | Dúvidas Discourse    | [Atribuição de cores em um gráfico com ggplot2](https://discourse.curso-r.com/t/atribuicao-de-cores-em-um-grafico-com-ggplot2/1025)                                               |
+|    6 | Dúvidas Discourse    | [Colorir apenas uma barra do gráfico com ggplot2](https://discourse.curso-r.com/t/colorir-apenas-uma-barra-do-grafico-com-ggplot2/1026)                                           |
+|    6 | Dúvidas Discourse    | [Manipulação de dados para fazer um boxplot com ggplot2](https://discourse.curso-r.com/t/manipulacao-de-dados-para-fazer-um-boxplot-com-ggplot2/1027/2)                           |
+|    6 | Fatores              | [Capítulo do livro “Ciência de Dados em R”: 3.13.2 Fatores](https://livro.curso-r.com/3-13-outros-t%C3%B3picos.html)                                                              |
+|    6 | Gráficos             | [Pacote ggrepel - afastar as anotações (labels)](https://ggrepel.slowkow.com/)                                                                                                    |
+|    6 | Gráficos             | [Pacote plotly](https://plotly.com/ggplot2/)                                                                                                                                      |
+|    6 | Gráficos             | [Pacote gghighlight - realçando pontos](https://blog.curso-r.com/posts/2020-02-20-gghighlight/)                                                                                   |
+|    6 | Gráficos             | [Galeria de extensões para o ggplot2](https://exts.ggplot2.tidyverse.org/gallery/)                                                                                                |
+|    6 | Gráficos             | [Cores no R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)                                                                                                               |
+|    6 | Gráficos             | [Documentação do ggplot2](https://ggplot2.tidyverse.org/reference/index.html)                                                                                                     |
+|    6 | Gráficos             | [Ferramenta para buscar as cores em hex](https://htmlcolorcodes.com/)                                                                                                             |
+|    6 | Gráficos             | [Pacote ggrepel - afastar as anotações (labels)](https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html)                                                          |
+|    6 | Gráficos             | [Como substituir NA por 0?](https://tidyr.tidyverse.org/reference/replace_na.html)                                                                                                |
+|    6 | Dúvidas              | [Video sobre como conectar bancos de dados SQL com o R](https://www.youtube.com/watch?v=Es8H2LjfikY)                                                                              |
+|    6 | Sugestões            | [Lista de links legais sobre visualização de dados](https://github.com/krzjoa/awesome-r-dataviz)                                                                                  |
+|    6 | Sugestões            | [Post sugerido pelo Bruno sobre ggplot2](https://www.cedricscherer.com/2021/07/05/a-quick-how-to-on-labelling-bar-graphs-in-ggplot2/)                                             |
+|    6 | Sugestões            | [Tidytuesday - exemplos de gráficos interessantes](https://github.com/z3tt/TidyTuesday)                                                                                           |
+|    6 | Gráficos             | [Pacotes do tidyverse](https://www.tidyverse.org/packages/)                                                                                                                       |
+|    6 | Gráficos             | [Paletas de cores hexadecimais](https://coolors.co/generate)                                                                                                                      |
+|    6 | Gráficos             | [Pacote prismatic::color(colors())](https://emilhvitfeldt.github.io/prismatic/)                                                                                                   |
+|    7 | Caminhos             | [Pacote here](https://here.r-lib.org/)                                                                                                                                            |
+|    7 | Comunidades          | [Curso-R Entrevista - Adriana Silva](https://www.youtube.com/watch?v=QAv8566nHEk)                                                                                                 |
+|    7 | Relatórios           | [Capítulo do livro “Ciência de Dados em R”: Relatórios](https://livro.curso-r.com/9-relatorios.html)                                                                              |
+|    7 | Relatórios           | [Cheatsheet RMarkdown](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)                                                                                |
+|    7 | Relatórios           | [Netlify Drop](https://app.netlify.com/drop)                                                                                                                                      |
+|    7 | Relatórios           | [Knitr: mudando o diretório de trabalho](https://blog.curso-r.com/posts/2017-03-25-knitr-mudando-diretorio-de-trabalho/)                                                          |
+|    7 | Relatórios           | [Pacote xaringan: Addin infinite moon reader](https://github.com/yihui/xaringan)                                                                                                  |
+|    7 | Relatórios           | [Pacote prettydoc](https://prettydoc.statr.me/)                                                                                                                                   |
+|    7 | Relatórios           | [Instalação LaTeX](https://livro.curso-r.com/1-3-instalacao-adicionais.html#latex)                                                                                                |
+|    7 | Relatórios           | [Escala de cores: Viridis](https://ggplot2.tidyverse.org/reference/scale_viridis.html)                                                                                            |
+|    7 | Relatórios           | [Pacote Geobr](https://ipeagit.github.io/geobr/)                                                                                                                                  |
+|    7 | Trabalho Final       | [Dicas para formatar tabelas](https://www.curso-r.com/blog/2020-12-03-dicas-relatorios-r4ds1_tabelas/)                                                                            |
+|    7 | Trabalho Final       | [Dicas para formatar gráficos](https://www.curso-r.com/blog/2020-17-02-dicas-relatorios-r4ds1_graficos/)                                                                          |
+|    7 | Trabalho Final       | [Dicas para elaborar relatórios](https://blog.curso-r.com/posts/2021-03-15-dicas-relatorios-r4ds1_relatorios/)                                                                    |
+|    7 | Relatórios           | [Equações em LaTeX](https://en.wikibooks.org/wiki/LaTeX/Mathematics)                                                                                                              |
+|    7 | Relatórios           | [Documentação do pacote ggplot2](https://github.com/yixuan/prettydoc/)                                                                                                            |
+|    7 | Relatórios           | [Exemplos de documentos criados com RMarkdown](https://curso-r.github.io/main-visualizacao/slides/02-introducao-rmd.html#5)                                                       |
+|    7 | Extra                | [Live base dos dados](https://www.youtube.com/watch?v=8D4jK-YCxLU&t=3787s)                                                                                                        |
+|    7 | Extra                | [Twitter base dos dados](https://twitter.com/basedosdados)                                                                                                                        |
+|    7 | Extra                | [Projeto base dos dados](https://basedosdados.org/)                                                                                                                               |
 
 ## Redes sociais da Curso-R
 
