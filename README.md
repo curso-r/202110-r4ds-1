@@ -21,6 +21,13 @@ Fora do horário de aula ou monitoria:
 -   perguntas sobre R, principalmente as que envolverem código, deverão
     ser enviadas no [nosso fórum](https://discourse.curso-r.com/).
 
+## Trabalhos finais premiados
+
+| Nome                          | Trabalho                                                                               | Código                                                                                            |
+|:------------------------------|:---------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------|
+| Amanda Silva Mendes           | <https://curso-r.github.io/202110-r4ds-1/trabalho_final/Amanda_Silva_Mendes>           | <https://github.com/curso-r/202110-r4ds-1/tree/main/trabalho_final/Amanda_Silva_Mendes>           |
+| Maria Elisa Rocha Couto Gomes | <https://curso-r.github.io/202110-r4ds-1/trabalho_final/Maria_Elisa_Rocha_Couto_Gomes> | <https://github.com/curso-r/202110-r4ds-1/tree/main/trabalho_final/Maria_Elisa_Rocha_Couto_Gomes> |
+
 ## Slides
 
 | slide                              | link                                                                       |

@@ -34,24 +34,35 @@ Fora do horário de aula ou monitoria:
 
 - perguntas sobre R, principalmente as que envolverem código, deverão ser enviadas no [nosso fórum](https://discourse.curso-r.com/).
 
-
-
-```{r eval=FALSE, include=FALSE}
-
 ## Trabalhos finais premiados
-nome_pasta <- "trabalhos_finais"
+
+```{r echo=FALSE}
+nome_pasta <- "trabalho_final"
+
+
+# https://curso-r.github.io/202110-r4ds-1/trabalho_final/Amanda_Silva_Mendes/index.html
+
 
 tibble::tibble(
-  script = list.files(nome_pasta, recursive = FALSE),
+  nome = list.files(nome_pasta, recursive = FALSE),
   link = paste0(
     "https://curso-r.github.io/",
     turma, "/",
     nome_pasta, "/",
-    script
+    nome
+  ), 
+  
+  codigo = paste0(
+    "https://github.com/curso-r/",
+    turma, "/tree/main/",
+    nome_pasta, "/",
+    nome
   )
-) %>% 
-  knitr::kable()
+) |>  
+  dplyr::mutate(nome = stringr::str_replace_all(nome, "_", " ")) |> 
+  knitr::kable(col.names = c("Nome", "Trabalho", "Código"))
 ```
+
 
 ## Slides
 
