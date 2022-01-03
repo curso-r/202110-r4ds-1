@@ -1,0 +1,944 @@
+---
+title: "\"Lugar de mulher é na cozinha\"?"
+author: "Maria Elisa Rocha Couto Gomes"
+date: "22/11/2021"
+output:
+  prettydoc::html_pretty:
+    theme: hpstr
+    highlight: github
+---
+
+## Prefácio
+
+::: {style="text-align: justify"}
+Este relatório foi produzido como trabalho final do curso "R para Ciências de Dados I", organizado pela [*Curso-R*](https://curso-r.com/).
+
+Considerando que nós, alunos do curso, podíamos escolher o tema e os dados que fossem de nossa preferência, aproveitei esta oportunidade para analisar a divisão das tarefas domésticas e de cuidado não remuneradas sob uma perspectiva diferente daquela que tem me guiado em minha dissertação de mestrado. Enquanto, nela, tenho me dedicado à análise dos determinantes da alocação do tempo de homens e mulheres, em casais heterossexuais e homoafetivos, na realização destas tarefas, neste relatório, me voltarei às crenças e expectativas de gênero, alguns dos principais fatores que moldam nossos comportamentos perante os afazeres domésticos e de cuidado.
+:::
+
+## Introdução
+
+::: {style="text-align: justify"}
+Dito isto, gostaria de começar com a seguinte provocação: "lugar de mulher é na cozinha". Arrisco dizer que todo brasileiro, em algum momento de sua vida, já se deparou com este ditado popular. Suas poucas palavras servem como uma espécie de lembrete para o que significa "ser mulher" em uma sociedade altamente generificada: realizar as tarefas domésticas e de cuidado não remuneradas.
+
+Tendo em mente as importantes mudanças que, desde a segunda metade do século XX, temos observado na família, principalmente, naquilo que diz respeito ao aumento da participação das mulheres no mercado de trabalho, neste relatório, tentarei avaliar o quão pertinente este ditado popular é entre mulheres e homens brasileiros casados no começo do século XXI. Em outras palavras, meu principal objetivo é responder à seguinte pergunta: no Brasil do século XXI, lugar de mulher é na cozinha ou onde ela quiser?
+
+Procurando respondê-la, utilizarei dados do módulo [*Family and Changing Gender Values*](https://www.gesis.org/en/issp/modules/issp-modules-by-topic/family-and-changing-gender-roles/2002), coletados em 2002 como parte do *International Social Survey Programme* (ISSP). Além desta introdução, o presente trabalho contém as seguintes seções:
+
+-   Em **"Divisão Sexual do Trabalho: um obstáculo à verdadeira "Revolução de Gênero"?"**, discutirei brevemente a literatura sociológica sobre a divisão dos trabalhos domésticos e de cuidado não remunerados, dando maior atenção à hipótese derivada da perspectiva de gênero, uma vez que esta será a principal hipótese a ser abordada neste relatório.
+
+-   Em **"Metodologia"**, apresentarei o banco de dados e as variáveis utilizadas para a realização da análise aqui pretendida. Além disto, descreverei a estratégia metodológica adotada.
+
+-   Em **"Resultados"**, realizarei uma breve descrição acerca do perfil da amostra selecionada e os principais resultados obtidos durante a execução deste trabalho. Como também possuía o intuito de aprender a programar em R, os códigos também serão apresentados.
+
+-   Em **"Considerações finais"**, tecerei comentários gerais sobre aquilo que foi descoberto durante a elaboração deste relatório.
+
+-   Por fim, na seção **"Para saber mais: dicas de leituras**", listarei algumas referências bibliográficas que, embora não tenham sido devidamente citadas neste trabalho, têm guiado meus estudos sobre a divisão dos afazeres domésticos e de cuidado para aqueles que tiverem interesse em aprender mais sobre este tema.
+:::
+
+## Divisão Sexual do Trabalho: um obstáculo à verdadeira "Revolução de Gênero"?
+
+::: {style="text-align: justify"}
+A maioria dos estudos dedicados à investigação do trabalho doméstico não remunerado discute como é feita sua distribuição entre os membros de famílias formadas por casais heterossexuais. A partir de medidas, como, por exemplo, a quantidade de horas que as pessoas dedicam aos afazeres domésticos, tais pesquisas procuram identificar quais são os fatores que levam aos desequilíbrios entre seus membros.
+
+Dentre as principais hipóteses explicativas disponíveis na literatura sobre este tema, observa-se a tendência de se atribuir suas causas às diferenças existentes entre estes homens e mulheres, como, por exemplo, de poder de negociação, renda, escolaridade, tempo livre disponível e, até mesmo, aos momentos do ciclo de vida em que se encontram. Tais abordagens recebem, respectivamente, os seguintes nomes: teoria da barganha, teoria do capital humano, hipótese da disponibilidade de tempo e perspectiva do ciclo de vida.
+
+Ao comparar os resultados destes estudos, é possível observar um ponto comum: as mulheres, geralmente, se dedicam muito mais às tarefas domésticas do que seus respectivos maridos. Tem-se, portanto, que todas estas abordagens se mostram insuficientes se não consideramos o sistema de normas e expectativas de gênero. Este consistiria, justamente, nos aspectos psicológicos e sociológicos constituintes da identidade de gênero. Em outras palavras, podemos dizer que tal sistema se refere a um conjunto de obrigações decorrentes do "ser homem" e do "ser mulher", em sociedades em que tais categorias são rigidamente separadas e controladas.
+
+Dentre elas, temos as obrigações decorrentes da divisão sexual do trabalho, que consiste em um fenômeno histórico e social por meio do qual se definiu a divisão social do trabalho, tendo como base as relações entre os sexos. Os principais aspectos deste fenômeno seriam a separação e a hierarquização. O primeiro aspecto, portanto, se refere à própria distinção dos trabalhos entre aqueles que, pertencentes à esfera produtiva, deveriam ser realizados por homens, e aqueles que, pertencentes à esfera reprodutiva, deveriam ser realizados por mulheres. Já o segundo, por sua vez, se traduz na ideia de que os "trabalhos de homem" são considerados superiores aos "trabalhos de mulher". No entanto, é importante observar que, se, por um lado, a divisão das tarefas domésticas é determinada conforme as normas de gênero da sociedade, por outro, é por meio de sua realização que os papéis, associados a elas, são demonstrados e reafirmados.
+
+Embora muito tenha sido conquistado no Século XX, as mulheres continuam realizando grande parte do trabalho doméstico e de cuidado não remunerados. Talvez, o descompasso entre aquilo que, por elas, fora conquistado na esfera pública e a persistência das desigualdades na esfera privada, especialmente, as que dizem respeito à divisão das tarefas domésticas e cuidado, seja o principal entrave à igualdade de gênero. Tal constatação levou diversos autores a afirmarem que, durante este período, houve, na verdade, uma revolução "incompleta" ou "lenta" de genêro. Ambas possuindo a intenção de nos remeter à ideia de que, se, por um lado, foi promovida por mudanças significativas no comportamento das mulheres na esfera pública, por outro, é desacelarada pela persistência dos comportamentos tradicionais dos homens na esfera privada.
+
+Este é, portanto, o "arcabouço teórico e empírico", a partir do qual, ao longo deste trabalho investigarei a que pé andavam, em 2002, as principais crenças que, supostamente, servem de base para tais comportamentos.
+:::
+
+## Metodologia
+
+::: {style="text-align: justify"}
+Nesta seção, apresentarei, em linhas gerais, o banco de dados e a estratégia metodológica utilizados para a realizaçao deste trabalho.
+:::
+
+### Banco de dados
+
+::: {style="text-align: justify"}
+Neste relatório, utilizei dados do módulo *Family and Changing Gender Values*, coletados em 2002 pelo *International Social Survey Programme* (ISSP), associação internacional independente, cujo principal objetivo é coletar periodicamente, em 57 países membros, informações sobre diferentes temas socialmente relevantes.
+
+O módulo, aqui utilizado, contém informações sobre os valores familiares e de gênero dos seguintes países: Alemanha, Austrália, Austria, Bélgica, Brasil, Bulgaria, Chile, Chipre, Dinamarca, Eslovênia, Eslováquia, Espanha, Estados Unidos da América, Filipinas, Finlândia, França, Holanda, Húngria, Irlanda, Irlanda do Norte, Israel, Japão, Letônia, México, Noruega, Nova Zelândia, Pôlonia, Portugal, Reino Unido, República Tcheca, Rússia, Suécia, Suíça e Taiwan.
+:::
+
+```{r BancoDeDados, include=FALSE}
+
+# Carregando os pacots que serão utilizados durante análise
+
+library(foreign)
+library(tidyverse)
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+library(readr)
+
+# Extraindo os dados do módulo "Family and Changing Gender Values" do ISSP de 2002
+
+ZA3880_v1_1_0 <-
+  foreign::read.dta(
+    "Dados/ZA3880_v1-1-0.dta",
+    convert.dates = TRUE,
+    convert.factors = TRUE,
+    missing.type = FALSE,
+    convert.underscore = FALSE,
+    warn.missing.labels = TRUE
+  )
+
+write_csv(ZA3880_v1_1_0, file = "Dados/ZA3880_v1_1_0.csv")
+```
+
+### Amostra selecionada
+
+```{r FiltrosAmostra, include=FALSE}
+
+# Aplicando os filtros para selecionar apenas os brasileiros casados
+
+brasil <- ZA3880_v1_1_0 %>%
+  group_by(COUNTRY) %>%
+  filter(COUNTRY == "Brazil (BR)")
+
+brasil_casados <- brasil %>%
+  group_by(v202) %>%
+  filter(v202 == "Marr,liv as mar")
+
+n_total <- nrow(ZA3880_v1_1_0)
+
+n_brasil <- nrow(brasil)
+
+n_casados <- nrow(brasil_casados)
+
+write_csv(brasil_casados, file = "Dados/brasil_casados.csv")
+
+```
+
+::: {style="text-align: justify"}
+Para o módulo *"Family and Changing Gender Values"*, o ISSP entrevistou`r n_total`pessoas, com mais de 18 anos de idade, nos países anteriormente citados, das quais `r n_brasil` eram brasileiras. No entanto, neste relatório, apenas considerei os casos em que, além de brasileiros, os indivíduos também eram casados ou cohabitavam com seus respectivos cônjuges, sendo importante observar que, nesta pesquisa, apenas foram considerados casais heterossexuais. Uma vez que tais filtros foram feitos, restaram `r n_casados` casos na amostra.
+
+Tal seleção se deu por dois motivos principais, sendo eles:
+
+1)  O fato de o Brasil se destacar enquanto um país em que, além de os valores familiares e de gênero permanecerem muito tradicionais, há elevadíssimas desigualdades de gênero e também severa escassez de políticas públicas por meio das quais o Estado busque contribuir para a redução de tais desigualdades, auxiliando, por exemplo, no provimento de cuidado para pessoas dependentes;
+
+2)  Na literatura sobre este tema, defende-se a ideia de que o casamento é a instituição generificada por excelência. Ou seja, segundo diversos autores, fazer parte de um casal heterossexual influenciaria, consideravelmente, os valores familiares e de gênero dos indivíduos.
+:::
+
+### Estratégia metodológica
+
+::: {style="text-align: justify"}
+Neste relatório, apresentarei apenas estatísticas descritivas a respeito da amostra selecionada. Considerando que seu perfil sociodemográfico pode vir a influenciar os resultados que obtivermos a respeito dos comportamentos e crenças de gênero de homens e mulheres, em primeiro lugar, analisarei as seguintes variáveis:
+
+-   Sexo;
+
+-   Idade;
+
+-   Cor/raça;
+
+-   Anos de escolaridade;
+
+-   Situação de emprego atual;
+
+-   Horas trabalhadas semanalmente;
+
+-   Rendimento;
+
+-   Renda familiar;
+
+-   Número de filhos de 0 a 6 anos de idade que residem no mesmo domicílio;
+
+-   Número de filhos com 7 anos de idade ou mais que residem no mesmo domicílio.
+
+Em seguida, observarei em que medida homens e mulheres concordam ou discordam das seguintes frases:
+
+-   "Trabalhar é bom, mas o que a maioria das mulheres realmente quer é ter um lar e filhos";
+
+-   "Ser dona de casa é tão gratificante quanto trabalhar fora";
+
+-   "O trabalho do homem é ganhar dinheiro, o trabalho da mulher é cuidar da casa e da família";
+
+-   "Os homens deveriam assumir mais trabalhos domésticos do que fazem atualmente";
+
+-   "Os homens deveriam cuidar mais das crianças do que cuidam atualmente".
+:::
+
+```{r SeleçãoVariáveis, include=FALSE}
+
+# Mantendo apenas as minhas varáveis de interesse no banco de dados
+
+brasil_casados_vs <- brasil_casados %>%
+  select(
+    v3,
+    COUNTRY,
+    v7,
+    v8,
+    v11,
+    v12,
+    v13,
+    v30,
+    v31,
+    v32,
+    v33,
+    v34,
+    v35,
+    v36,
+    v38,
+    v39,
+    v40,
+    v44,
+    v45,
+    v48,
+    v50,
+    v51,
+    v54,
+    v66,
+    v67,
+    v201,
+    v200,
+    v202,
+    v204,
+    v239,
+    v240,
+    v249,
+    v250,
+    v359)
+
+```
+
+```{r ModificandoNomesDasVariáveis, include=FALSE}
+
+# Modificando o nome das variáveis para facilitar a identificação das mesmas
+
+
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v3"] <-
+  "identificador"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "COUNTRY"] <-
+  "país"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v7"] <-
+  "mulher_casa_filhos"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v8"] <-
+  "casa_realização"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v11"] <-
+  "trab_homem_mulher"
+names(brasil_casados_vs)[names(brasil_casados_vs) ==  "v12"] <-
+  "homem_domésticas"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v13"] <-
+  "homem_cuidado"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v30"] <-
+  "lavar_roupa"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v31"] <-
+  "pequenos_reparos"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v32"] <-
+  "doença_parentes"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v33"] <-
+  "compras"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v34"] <-
+  "limpeza"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v35"] <-
+  "comida"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v36"] <-
+  "horas_trab_dom"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v38"] <-
+  "divisão_tar_dom"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v39"] <-
+  "conflito_tar_dom"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v40"] <-
+  "decisões_crianças"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v44"] <-
+  "sobrecarga_tar_dom"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v45"] <-
+  "stress_casa"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v48"] <-
+  "cansaço_tar_dom"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v50"] <-
+  "cansaço_dom_trab"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v51"] <-
+  "concentração_trab"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v54"] <-
+  "familia_satisfação"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v66"] <-
+  "filhos_maiores"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v67"] <-
+  "crianças_pequenas"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v201"] <-
+  "idade"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v200"] <-
+  "sexo"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v202"] <-
+  "status_marital"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v204"] <-
+  "anos_escolaridade"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v239"] <-
+  "emprego_status"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v240"] <-
+  "horas_trab"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v249"] <-
+  "rendimento"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v250"] <-
+  "renda_familiar"
+names(brasil_casados_vs)[names(brasil_casados_vs) == "v359"] <-
+  "identidade_etnica"
+
+write_csv(brasil_casados_vs, file = "Dados/brasil_casados_vs.csv")
+```
+
+## Resultados
+
+::: {style="text-align: justify"}
+Nesta seção, serão apresentados os principais resultados obtidos.
+
+Em um primeiro momento, farei uma breve descrição do perfil sóciodemográfico da amostra selecionada, explorando as seguintes características: sexo, idade, cor/raça, escolaridade, situação de ocupação, rendimento, número de filhos residentes no mesmo domicílio.
+
+Em seguida, explorarei dados referentes aos valores familiares e de gênero e à divisão dos afazeres domésticos segundo o sexo dos entrevistados.
+:::
+
+### Uma breve descrição da amostra
+
+#### Sexo
+
+::: {style="text-aling: justify"}
+Como é possível observar a partir da leitura da Figura 1, em nossa amostra, 50,46% dos entrevistados eram mulheres, enquanto 49,54% eram homens. Isto nos indica que a distribuição relativa dos entrevistados segundo seu sexo segue aquilo que era esperado, de acordo com a presença de homens e mulheres na população brasileira em geral.
+:::
+
+```{r DSexo}
+
+# Distribuição relativa de brasileiros casados por sexo
+
+sexo_grafico <- brasil_casados_vs %>%
+  group_by(sexo) %>%
+  summarise(n = n()) %>%
+  mutate(freq_sexo = n / sum(n)) %>%
+  mutate(freq_sexo = freq_sexo * 100) %>%
+  mutate(freq_sexo = round(freq_sexo, 2)) %>%
+  ungroup() %>%
+  ggplot() +
+  geom_col(aes(x = sexo, y = freq_sexo, fill = sexo), show.legend = TRUE) +
+  geom_label(aes(x = sexo, y = freq_sexo,
+                 label = freq_sexo)) +
+  scale_fill_manual(
+    labels = c("Masculino", "Femino"),
+    values = c("lightblue3", "hotpink1")
+  ) +
+  labs(
+    y = "Frequência relativa",
+    fill = "Sexo",
+    title = "Figura 1- Distribuição relativa de brasileiros casados por sexo",
+    caption = "Fonte: ISSP, 2002."
+  ) +
+  theme_minimal()+ 
+  theme(
+  axis.title.x = element_blank(),
+  axis.ticks.x = element_blank(),
+  axis.title.y = element_text(size = 8),
+  axis.text.x = element_blank(),
+  plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+  plot.caption = element_text(hjust = 0.5)
+)
+
+print(sexo_grafico)
+
+```
+
+#### Idade
+
+::: {style="text-align: justify"}
+Já a Figura 2 contem a distribuição da idade dos brasileiros casados de acordo com seu sexo. Sendo assim, a partir dela, é possível perceber que, em nossa amostra, as mulheres são ligeiramente mais novas que os homens, uma vez que, para elas, a mediana desta variável foi, aproximadamente, 39 anos, enquanto, para os homens, foi 43 anos.
+
+No entanto, considerando esta é uma medida extremamente sensível a valores discrepantes, é interessante ressaltar que, por um lado, o valor da mediana dos homens pode estar sendo influenciada pelo valor máximo de 85 anos encontrado na amostra. Por outro, a das mulheres pode estar sendo afetada pelo valor mínimo de 18 anos.
+:::
+
+```{r DIdade}
+
+# Distribuição dos brasileiros casados por idade, de acordo com seu sexo
+
+idade_sexo <- brasil_casados_vs %>% 
+  group_by(sexo) %>% 
+  ggplot() +
+  geom_boxplot(aes(x = sexo, y = idade, fill = sexo)) +
+  scale_y_continuous(breaks = c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85)) +
+  scale_fill_manual(labels = c("Masculino", "Femino"),
+                       values = c("lightblue3", "hotpink1")) +
+  labs(fill = "Sexo",
+       title = "Figura 2 - Distribuição da idade por sexo para brasileiros casados",
+       caption = "Fonte: ISSP, 2002.")+
+  theme_minimal() +
+  theme(axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+        plot.caption = element_text(hjust = 0.5))
+
+print(idade_sexo)
+
+```
+
+#### Autodeclaração de cor/raça
+
+::: {style="text-align: justify"}
+A Figura 3 possui a distribuição relativa dos brasileiros casados de acordo com sua autodeclaração de cor/raça. Assim como na população brasileira em geral, na amostra selecionada, a maioria, 49,54%, dos entrevistados se declarou branca. O segundo grupo racial a apresentar maior frequência relativa foi o grupo de pardos, representando 33,6% dos brasileiros casados. Os entrevistados pretos, indígenas e amarelos, por sua vez, somaram 9,24%, 2,66% e 1,85%, respectivamente.
+
+Além da frequência relativa dos grupos anteriormente mencionados, na Figura 3, também é possível observar que 3,12% dos entrevistados preferiram não declarar sua cor/raça.
+:::
+
+```{r DRaça}
+
+# Distribuição relativa dos brasileiros casados de acordo com sua autodeclaração de cor/raça
+# OBS.: Antes de elaborar o gráfico, a variável foi modificada para que as categorias correspondessem àquelas utilizadas pelo IBGE
+
+
+raca <- brasil_casados_vs %>% 
+   mutate(identidade_etnica = case_when(
+    is.na(identidade_etnica) ~ "Não declarada",
+    identidade_etnica == "American Indian,Navajo,Ind.Dialect" ~ "Indígena",
+    identidade_etnica == "Asia,other Asian" ~ "Amarela",
+    identidade_etnica == "Black/African/Carribean,No-Spanish" ~ "Preta",
+    identidade_etnica == "Europe,White/European" ~ "Branca",
+    identidade_etnica == "Other,mixed origin,one-non-swedish" ~ "Parda"
+  )) %>%
+  group_by(identidade_etnica) %>% 
+ summarise(n = n(), na.rm = TRUE) %>% 
+  mutate(freq_raca = n/sum(n)) %>%
+  mutate(freq_raca = freq_raca*100) %>% 
+  mutate(freq_raca = round(freq_raca, 2)) %>% 
+  ungroup() %>% 
+  ggplot() +
+  geom_col(aes(x = identidade_etnica, y = freq_raca, fill = identidade_etnica)) +
+  geom_label(aes(x = identidade_etnica, y = freq_raca, 
+                 label = freq_raca)) +
+  scale_fill_manual(values = c("darksalmon", "aquamarine", "darkseagreen1", "grey", "khaki1", "plum2")) +
+  labs(y = "Percentual de entrevistados", fill = "Cor/raça",
+       title = "Figura 3 - Distribuição relativa da amostra por cor/raça",
+      caption = "Fonte: ISSP, 2002.") +
+  theme_minimal() +
+  theme(
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+        plot.caption = element_text(hjust = 0.5))
+
+
+print(raca)
+
+```
+
+#### Anos de escolaridade
+
+::: {style="text-align: justify"}
+Na Figura 4, é possível observar a distribuição dos anos de escolaridade que possuem os brasileiros casados de acordo com seu sexo. Neste gráfico, o eixo y contém quatro númeris diferentes, cada um deles correspondentes à quantidade de anos de estudos necessários para a finalização de importantes níveis educacionais. Enquanto 8 anos representa a finalização do Ensino Fundamental, 11 anos corresponde ao encerramento do Ensino Médio e 15 anos à conclusão do Ensino Superior.
+
+Posto isto, a partir da leitura da Figura 4, tem-se que as mulheres, como mediana, apresentaram, aproximadamente, 6 anos de escolaridade, enquanto os homens obtiveram apenas 5 anos. Embora ambos valores sejam extremamente baixos, eles refletem aquilo que é afirmado pela literatura sociológica a respeito das desigualdades educacionais. No Brasil, as mulheres são, geralmente, mais escolarizadas do que os homens.
+:::
+
+```{r DEscolaridade}
+
+# Distribuição de brasileiros casados por anos de escolaridade, de acordo com seu sexo
+
+escolaridade_sexo <- brasil_casados_vs %>%
+  mutate(anos_escolaridade = na_if(anos_escolaridade, 97)) %>%
+  group_by(sexo) %>%
+  ggplot() +
+  geom_boxplot(aes(x = sexo, y = anos_escolaridade, fill = sexo)) +
+  scale_y_continuous(breaks = c(0, 8, 11, 15)) +
+  scale_fill_manual(
+    labels = c("Masculino", "Femino"),
+    values = c("lightblue3", "hotpink1")
+  ) +
+  labs(
+    y = "Anos de escolaridade",
+    fill = "Sexo",
+    title = "Figura 4 - Distribuição dos anos de escolaridade por sexo \npara brasileiros casados",
+    caption = "Fonte: ISSP, 2002."
+  ) +
+  theme_minimal()+
+  theme(
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.text.x = element_blank(),
+    plot.title = element_text(size = 11, face = "bold", hjust = 0.5),
+    plot.caption = element_text(hjust = 0.5)
+  )
+
+print(escolaridade_sexo)
+
+```
+
+#### Situação de emprego
+
+::: {style="text-align: justify"}
+Assim como a Figura 4 anteriormente apresentados, a Figura 5 nos revela importantes diferenças existentes entre os homens e mulheres que compõem a amostra selecionada. Ao nos mostrar sua distribuição relativa por situação de emprego de acordo com sexo, a Figura 5 demonstra que, enquanto 64% dos homens possuem empregos em tempo integral, apenas 27,2% das mulheres se encontram na mesma situação.
+
+Em contrapartida, se, por um lado, 50,88% das mulheres eram donas de casa, por outro, apenas 0,81% dos homens também o eram. Tais resultados, embora sejam simplesmente descritivos, nos indicam que, em 2002, a maioria das mulheres casadas assumiam as tarefas de manutenção da casa e de cuidados com outros moradores como sua principal atividade.
+
+Uma vez que o regime de emprego adotado também pode nos indicar uma tentativa de conciliação entre as esferas produtiva e reprodutiva, também merece destaque a pequena porcentagem de mulheres que possuíam empregos em tempo parcial, 8,82%. Em outras palavras, os resultados aqui discutidos apontam, em primeiro lugar, para uma predominância das mulheres casadas nas atividades domésticas, em detrimento do mercado de trabalho.
+
+Entre os homens, também se destacaram aqueles que estavam aposentados e aqueles que trabalhavam em tempo parcial, correspondendo a 22,58% e 6,72% respectivamente. Tanto entre os homens quanto entre as mulheres, os desempregados correspondiam, aproximadamente, a apenas 3,3%.
+:::
+
+```{r DEmprego}
+
+# Distribuição dos brasileiros casados por situação de emprego, de acordo com seu sexo
+
+emprego_sexo_grafico <- brasil_casados_vs %>% 
+  mutate(emprego_status = case_when(
+    emprego_status == "Employed-full time" ~ "Trab. tempo integral",
+    emprego_status == "Housewife,home duties" ~ "Dona de casa",
+    emprego_status == "Retired" ~ "Aposent.",
+    emprego_status == "Helping family member" ~ "Parente que ajuda",
+    emprego_status == "Oth, not i labor force" ~ "Outro",
+    emprego_status == "Unemployed" ~ "Desempreg.",
+    emprego_status == "Permanently disabled" ~ "PCD",
+    emprego_status == "Employed-part time" ~ "Trab. tempo parcial",
+    emprego_status == "Studt,school,vct.trng" ~ "Estudante"
+  )) %>% 
+  mutate(sexo = case_when(
+    sexo == "Male" ~ "Masculino",
+    sexo == "Female" ~ "Feminino",
+  )) %>% 
+  filter(!is.na(emprego_status)) %>% 
+  group_by(sexo, emprego_status) %>% 
+  summarize(n = n()) %>% 
+  mutate(emprego_sexo = 100*n/sum(n)) %>% 
+  ggplot(aes(x = sexo, y = emprego_sexo, fill = emprego_status)) +
+  geom_bar(stat = "identity", show.legend = F) +
+  facet_grid(~ emprego_status, labeller = label_wrap_gen(width = 12)) +
+  coord_flip() +
+  ylim(c(0, 90)) +
+  geom_text(aes(label = round(emprego_sexo, 2)), hjust = -.1) +
+  theme(strip.text = element_text(size = 12)) +
+  scale_fill_manual(values = c("lightsalmon", "aquamarine", "darkseagreen1", "grey", "khaki1", "plum2")) +
+  labs(title = "Figura 5 - Distribuição relativa dos brasileiros \ncasados de acordo com sua situação de emprego \npor sexo",
+       caption = "Fonte: ISSP, 2002.")+
+  theme_minimal() +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+        plot.caption = element_text(hjust = 0.5))
+
+print(emprego_sexo_grafico)
+
+
+```
+
+#### Rendimento
+
+::: {style="text-align: justify"}
+A Figura 6 se volta a outra dimensão das desigualdades de gênero amplamente discutidas na Sociologia: os diferentes rendimentos médios que homens e mulheres obtêm no mercado de trabalho. Sendo assim, a partir de sua leitura, percebe-se que as mulheres, mesmo sendo mais escolarizadas que os homens, recebem, em média, R\$ 225,25 mensais a menos.
+
+Este resultado é um indicativo de que, mesmo quando inseridas no mercado de trabalho, as mulheres enfrentam uma série de obstáculos que as levam a receber menos que os homens. Além de, geralmente, possuírem ocupações de menos prestígio social e também menor valorização, mulheres também enfrentam diferentes tipos de discriminação, dentre os quais estão, por exemplo, a discriminação decorrente do fato de serem mães ou, até mesmo, da possibilidade de se tornarem mães, por estarem em idade reprodutiva.
+:::
+
+```{r DRendimento}
+
+# Rendimento médio dos brasileiros casados de acordo com seu sexo
+
+rendimento_médio_gráfico <- brasil_casados_vs %>% 
+  group_by(sexo) %>%
+  summarize(rendimento_medio = mean(rendimento, na.rm = TRUE)) %>% 
+  mutate(rendimento_medio = round(rendimento_medio, 2)) %>% 
+  ggplot() +
+  geom_col(aes(x = sexo, y = rendimento_medio, fill = sexo), show.legend = TRUE) +
+  geom_label(aes(x = sexo, y = rendimento_medio, label = rendimento_medio))+
+   scale_y_continuous(breaks = c(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100)) +
+  scale_fill_manual(labels = c("Masculino", "Femino"),
+                       values = c("lightblue3", "hotpink1")) +
+  labs(fill = "Sexo",
+       title = "Figura 6 - Rendimentos mensais médios (em R$) por sexo",
+       caption = "Fonte: ISSP, 2002.")+
+  theme_minimal() +
+  theme(
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+        plot.caption = element_text(hjust = 0.5))
+
+print(rendimento_médio_gráfico)
+
+
+```
+
+#### Filhos
+
+::: {style="text-align: justify"}
+Dentre as características sociodemográficas da amostra aqui apresentadas, as últimas serão as quantidades de filhos com até 6 anos e com mais de 7 anos de idade.
+
+Segundo a literatura sociológica sobre a divisão dos afazeres domésticos e de cuidado, a presença de filhos no domicílio é um fator extremamente importante para a compreensão deste fenômeno, uma vez que, dependendo de sua idade e de seu sexo, eles podem tanto aumentar quanto diminuir o tempo que os indivíduos dedicam à realização destas atividades.
+
+Sendo assim, na Figura 7, é possível observar que mais de 70% dos entrevistados residem no mesmo domicílio que, pelo menos, 1 filho com menos de 6 anos, enquanto, na Figura 8, percebemos que 40% deles convive com, ao menos, 1 filho com mais de 7 anos de idade.
+:::
+
+```{r DFilhosPequenos}
+
+
+# Distribuição de brasileiros casados de acordo com o número filhos com mais de 7 anos no domicílio
+# OBS.: antes de elaborar o gráfico, a variável referente ao número de filhos com menos de 6 anos (categórica) foi transformada em variável numérica.
+
+filhos_pequenos_gráfico <- brasil_casados_vs %>% 
+  mutate(crianças_pequenas = case_when(
+    crianças_pequenas == "1 child" ~ 1,
+    crianças_pequenas == "2 children" ~ 2,
+    crianças_pequenas == "3 children" ~ 3,
+    crianças_pequenas == "4 children" ~ 4,
+    crianças_pequenas == "5 children" ~ 5,
+    crianças_pequenas == "6 children" ~ 6,
+    crianças_pequenas== "7 children" ~ 7,
+    crianças_pequenas == "8 children" ~ 8,
+    crianças_pequenas == "9 children" ~ 9,
+    crianças_pequenas == "10 children" ~ 10)) %>% 
+  filter(!is.na(crianças_pequenas)) %>% 
+  group_by(crianças_pequenas) %>% 
+  summarize(n = n()) %>% 
+  mutate(freq_crianças_pequenas = n*100/sum(n)) %>% 
+  mutate(freq_crianças_pequenas = round(freq_crianças_pequenas, 2)) %>% 
+  ggplot() +
+  geom_col(mapping = aes(x = crianças_pequenas, y = freq_crianças_pequenas, fill = crianças_pequenas), show.legend = TRUE) +
+  scale_y_continuous(breaks = c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)) +
+  scale_x_continuous(breaks = c(1, 2, 3, 4, 5)) +
+  scale_fill_gradient(low = "tomato", high = "tomato4",
+                    breaks = c(2, 3, 4)) +
+  labs(y = "Frequência relativa", fill = "Número de filhos com \nmenos de 6 anos",
+       title = "Figura 7 - Distribuição relativa dos brasileiros casados \nde acordo com o número de filhos com menos de \n6 anos que residem no domicílio",
+       caption = "Fonte: ISSP, 2002")+
+  theme_minimal() +
+  theme(
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+        plot.caption = element_text(hjust = 0.5))
+
+
+print(filhos_pequenos_gráfico)
+
+
+
+
+```
+
+```{r DFilhosMaiores}
+
+
+# Distribuição de brasileiros casados de acordo com o número filhos com mais de 7 anos no domicílio
+# OBS.: antes de elaborar o gráfico, a variável referente ao número de filhos com mais de 7 anos (categórica) foi transformada em variável numérica.
+
+filhos_maiores_gráfico <- brasil_casados_vs %>% 
+  mutate(filhos_maiores = case_when(
+    filhos_maiores == "1 child" ~ 1,
+    filhos_maiores == "2 children" ~ 2,
+    filhos_maiores == "3 children" ~ 3,
+    filhos_maiores == "4 children" ~ 4,
+    filhos_maiores == "5 children" ~ 5,
+    filhos_maiores == "6 children" ~ 6,
+    filhos_maiores == "7 children" ~ 7,
+    filhos_maiores == "8 children" ~ 8,
+    filhos_maiores == "9 children" ~ 9,
+    filhos_maiores == "10 children" ~ 10)) %>% 
+  filter(!is.na(filhos_maiores)) %>% 
+  group_by(filhos_maiores) %>% 
+  summarize(n = n()) %>% 
+  mutate(freq_filhos_maiores = n*100/sum(n)) %>% 
+  mutate(freq_filhos_maiores = round(freq_filhos_maiores, 2)) %>% 
+  ggplot() +
+  geom_col(mapping = aes(x = filhos_maiores, y = freq_filhos_maiores, fill = filhos_maiores), show.legend = TRUE) +
+   scale_y_continuous(breaks = c(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100)) +
+  scale_x_continuous(breaks = c(0, 2, 4, 6, 8, 10)) +
+  scale_fill_gradient(low = "palegreen1", high = "darkseagreen4",
+                    breaks = c(0, 2, 4, 6, 8)) +
+  labs(y = "Frequência relativa", fill = "Número de filhos \ncom mais de 7 anos",
+       title = "Figura 8 - Distribuição relativa de brasileiros casados \nde acordo com o número de filhos com mais de \n7 anos que residem no domicílio",
+       caption = "Fonte: ISSP, 2002")+
+  theme_minimal() +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+        plot.caption = element_text(hjust = 0.5))
+
+
+print(filhos_maiores_gráfico)
+
+
+
+
+```
+
+### "Lugar de mulher é na cozinha"? Crenças relacionadas aos pápeis de homens e mulheres divisão dos afazeres domésticos e de cuidado não remunerados
+
+::: {style="text-align: justify"}
+Nesta seção, discutirei os principais resultados obtidos para as perguntas relativas às crenças de gênero a respeito dos afazeres domésticos e de cuidado não remunerados.
+:::
+
+#### "Trabalhar é bom, mas o que a maioria das mulheres realmente quer é ter um lar e filhos"
+
+::: {style="text-align: justify"}
+Iniciarei, portanto, analisando os resultados obtidos para a distribuição relativa de brasileiros casados de acordo com seu grau de concordância com a frase "Trabalhar é bom, mas o que a maioria das mulheres realmente quer é ter um lar e filhos" por sexo, contidos na Figura 9.
+
+Como é possível observar a partir de sua leitura, a maioria dos homens e das mulheres, 54,91% e 58,23%, respectivamente, concordam totalmente com esta frase. Os entrevistados que disseram discordar totalmente foram apenas 14,72% entre as mulheres e 11,79% entre os homens.
+
+Isto nos indica que, se, por um lado, em 2002, havia uma maior aceitação da presença das mulheres no mercado de trabalho do que, provavelmente, havia no século passado, por outro, ainda há forte associação entre seus objetivos de vida e as funções exercidas por mães e esposas em seus domicílios.
+:::
+
+```{r OQueMulheresQuerem}
+
+# Distribuição relativa de brasileiros casados de acordo com o grau de concordância com a frase "Trabalhar é bom, mas o que a maioria das mulheres realmente quer é ter um lar e filhos" por sexo
+
+# Obs.: Antes de elaborar o gráfico, foi necessário criar o labeller "opiniao" para que pudéssemos traduzir as categorias desta variável.
+
+opiniao <- list(
+  "Strongly Agree" = "Concordo totalmente",
+  "Agree" = "Concordo",
+  "Neither agree nor disagree" = "Não concordo nem discordo",
+  "Disagree" = "Discordo",
+  "Strongly disagree" = "Discordo totalmente")
+
+
+opiniao_labeller <- function(variable, value){
+  return(opiniao[value])
+  }
+
+casa_filhos_sexo <- brasil_casados_vs %>% 
+  filter(!is.na(mulher_casa_filhos)) %>% 
+  group_by(sexo, mulher_casa_filhos) %>% 
+  summarise(n = n()) %>% 
+  mutate(freq_casa_filhos = n*100/sum(n)) %>% 
+  ggplot(aes(x = sexo, y = freq_casa_filhos, fill = sexo)) +
+  geom_bar(stat = "identity", show.legend = TRUE) +
+  facet_grid(mulher_casa_filhos ~., labeller = as_labeller(opiniao_labeller, label_wrap_gen(width = 15, )))+
+  coord_flip() +
+  ylim(c(0, 90)) +
+  geom_text(aes(label = round(freq_casa_filhos, 2)), hjust = -.1) +
+  scale_fill_manual(label = c("Masculino", "Feminino"), values = c("lightblue3", "hotpink1")) +
+  theme(strip.text = element_text(size = 12)) +
+  labs(title = "Figura 9 - Distribuição relativa dos brasileiros casados \nde acordo com seu grau de concordância com a frase \n\"Trabalhar é bom, mas o que a maioria das mulheres \nrealmente quer é ter um lar e filhos\", por sexo",
+       fill = "Sexo",
+       caption = "Fonte: ISSP, 2002.")+
+  theme_minimal() +
+  theme(axis.title.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.x = element_blank(),
+        strip.text.y = element_text(angle = 0),
+        plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(hjust = 1),
+        plot.caption = element_text(hjust = 0.5))
+
+print(casa_filhos_sexo)
+
+```
+
+#### "Ser dona de casa é tão gratificante quanto trabalhar fora"
+
+::: {style="text-align: justify"}
+A Figura 10, relativa à distribuição de brasileiros casados segundo seu grau de concordância com a frase "Ser dona de casa é tão gratificante quanto trabalhar fora", apresenta resultados semelhantes àqueles encontrados para a Figura 9: a maior parte dos homens e mulheres da amostra, 54,64% e 48,71%, afirmou concordar totalmente com a afirmação. Porém, cabe destacar que, quando somamos as mulheres que não concordaram totalmente com esta frase, percebemos que estas correspondem a 51,29%.
+
+No entanto, quando voltamos nossa atenção àqueles que declararam discordar totalmente, observamos um pequeno aumento. Para 19,2% das mulheres e 13,42% dos homens, ser dona de casa e trabalhar fora são atividades cujos retornos são diferenciados em termos de realização.
+
+Estes resultados, portanto, nos indicam que, para muitos dos brasileiros casados, sejam eles homens ou mulheres, há uma certa equiparação entre os papéis desempenhados pelas mulheres em casa e pelas pessoas, em geral, no mercado de trabalho.
+:::
+
+```{r Realização}
+
+# Distribuição relativa dos brasileiros casados de acordo com o grau de concordância com a frase "Ser dona de casa é tão gratificante quanto trabalhar fora" por sexo
+
+casa_realização_sexo <- brasil_casados_vs %>%
+  filter(!is.na(casa_realização)) %>% 
+  group_by(sexo, casa_realização) %>% 
+  summarise(n = n()) %>% 
+  mutate(freq_casa_realização = n*100/sum(n)) %>% 
+  ggplot(aes(x = sexo, y = freq_casa_realização, fill = sexo)) +
+  geom_bar(stat = "identity", show.legend = TRUE) +
+  facet_grid(casa_realização ~., labeller = as_labeller(opiniao_labeller, label_wrap_gen(width = 15, )))+
+  coord_flip() +
+  ylim(c(0, 90)) +
+  geom_text(aes(label = round(freq_casa_realização, 2)), hjust = 1) +
+  scale_fill_manual(label = c("Masculino", "Feminino"), values = c("lightblue3", "hotpink1")) +
+  theme(strip.text = element_text(size = 12)) +
+  labs(title = "Figura 10 - Distribuição relativa dos brasileiros casados \nde acordo com seu grau de concordância com a frase \n\"Ser dona de casa é tão gratificante quanto \ntrabalhar fora\", por sexo",
+       fill = "Sexo",
+       caption = "Fonte: ISSP, 2002.")+
+  theme_minimal() +
+  theme(axis.title.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.x = element_blank(),
+        strip.text.y = element_text(angle = 0),
+        plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(hjust = 1),
+        plot.caption = element_text(hjust = 0.5))
+
+print(casa_realização_sexo)
+
+
+```
+
+#### "O trabalho do homem é ganhar dinheiro, o trabalho da mulher é cuidar da casa e da família"
+
+::: {style="text-align: justify"}
+A Figura 11, por sua vez, contem a distribuição relativa de brasileiros casados de acordo com seu grau de concordância com a frase "O trabalho do homem é ganhar dinheiro, o trabalho da mulher é cuidar da casa e da família" por sexo.
+
+Como é possível verificar a partir de sua leitura, tem-se que, enquanto a maioria dos homens, 41,51%, concordava totalmente com esta frase, a maior parte das mulheres, 36,83%, disse discordar totalmente. No entanto, é interessante observar que, entre as mulheres, 34,97% concordaram totalmente com os papéis de gênero descritos na afirmação. Em outras palavras, considerando apenas as mulheres casadas entrevistadas, a diferença entre as frequências obtidas para ambas as respostas foi de apenas 2,14%.
+
+Embora tal diferença seja extremamente pequena, tais resultados são bastante reveladores e estão em consonância com aquilo que a literatura sociológica sobre a divisão dos afazeres domésticos e de cuidado diz. Durante o Século XX, graças à maior inserção das mulheres no mercado de trabalho, houve grandes mudanças em seus comportamentos relativos aos papéis de gênero. Se, por um lado, ainda continuam realizando a maior parte do trabalho doméstico e de cuidado não remunerados, por outro, fortaleceu-se, entre elas, a crença de que estavam tão aptas para fazer parte do mercado de trabalho quanto os homens. Os homens, por sua vez, não passaram por este processo e, infelizmente, conservaram comportamentos mais tradicionais a respeito da divisão sexual do trabalho.
+:::
+
+```{r Deveres}
+
+# Distribuição relativa de brasileiros casados de acordo com o grau de concordância com a frase "O trabalho do homem é ganhar dinheiro, o trabalho da mulher é cuidar da casa e da família" por sexo
+
+dever_sexo <- brasil_casados_vs %>% 
+  filter(!is.na(trab_homem_mulher)) %>% 
+  group_by(sexo, trab_homem_mulher) %>% 
+  summarise(n = n()) %>% 
+  mutate(freq_dever = n*100/sum(n)) %>% 
+  ggplot(aes(x = sexo, y = freq_dever, fill = sexo)) +
+  geom_bar(stat = "identity", show.legend = TRUE) +
+  facet_grid(trab_homem_mulher ~., labeller = as_labeller(opiniao_labeller, label_wrap_gen(width = 15, )))+
+  coord_flip() +
+  ylim(c(0, 90)) +
+  geom_text(aes(label = round(freq_dever, 2)), hjust = -.1) +
+  scale_fill_manual(label = c("Masculino", "Feminino"), values = c("lightblue3", "hotpink1")) +
+  theme(strip.text = element_text(size = 12)) +
+  labs(title = "Figura 11 - Distribuição relativa dos brasileiros casados \nde acordo com seu grau de concordância com a frase \n\"O trabalho do homem é ganhar dinheiro, o trabalho \nda mulher é cuidar da casa e da família\", por sexo",
+       fill = "Sexo",
+       caption = "Fonte: ISSP, 2002.")+
+  theme_minimal() +
+  theme(axis.title.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.x = element_blank(),
+        strip.text.y = element_text(angle = 0),
+        plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+        plot.subtitle = element_text(hjust = 1, size = 8),
+        plot.caption = element_text(hjust = 0.5))
+
+print(dever_sexo)
+
+
+```
+
+#### "Os homens deveriam assumir mais trabalhos domésticos e cuidar mais das crianças do que fazem atualmente"
+
+::: {style="text-align: justify"}
+Neste sentido, as figuras 12 e 13 são bastante reveladoras, à medida que nos mostram que, embora homens não tenham modificado seus comportamentos e ainda realizem poucas tarefas domésticas e de cuidado, como, por exemplo, aquelas direcionadas às crianças, a maioria deles concorta totalmente com a ideia de que isto deveria mudar.
+
+Enquanto 52,61% disse concordar totalmente com a necessidade de que façam mais tarefas domésticas, 63,03% concordou totalmente com a necessidade de que participem mais do cuidado com as crianças. Isto reflete, principalmente, uma mudança que houve na própria concepção do que é a paternidade durante o Século XX. O "novo homem" que surge a partir da Revolução de Gênero é, praticamente, um novo pai, que, diferentemente dos pais pertencentes a gerações anteriores, deveria nutrir uma relação mais próxima com seus filhos e participar ativamente do processo de criação dos mesmos. Além disto, também é importante dizer que o cuidado com as crianças é frequentemente visto, tanto por homens como por mulheres, como uma atividade mais prazerosa e gratificante do que os afazeres domésticos.
+:::
+
+```{r HomensMaisTrabDom}
+
+# Distribuição relativa de brasileiros casados de acordo com o grau de concordância com a frase "Homens devem participar mais das tarefas domésticas do que participam atualmente" por sexo
+
+homem_dom_sexo <- brasil_casados_vs %>% 
+  filter(!is.na(homem_domésticas)) %>% 
+  group_by(sexo, homem_domésticas) %>% 
+  summarise(n = n()) %>% 
+  mutate(freq_homem_dom = n*100/sum(n)) %>% 
+  ggplot(aes(x = sexo, y = freq_homem_dom, fill = sexo)) +
+  geom_bar(stat = "identity", show.legend = TRUE) +
+  facet_grid(homem_domésticas ~., labeller = as_labeller(opiniao_labeller, label_wrap_gen(width = 12)))+
+  coord_flip() +
+  ylim(c(0, 90)) +
+  geom_text(aes(label = round(freq_homem_dom, 2)), hjust = -.1, size = 3.5) +
+  scale_fill_manual(label = c("Masculino", "Feminino"), values = c("lightblue3", "hotpink1")) +
+  labs(title = "Figura 12 - Distribuição relativa dos brasileiros casados \nde acordo com seu grau de concordância com a frase \n\"Os homens deveriam assumir mais trabalhos \ndomésticos do que fazem atualmente\", por sexo",
+       fill = "Sexo",
+       caption = "Fonte: ISSP, 2002.")+
+  theme_minimal() +
+  theme(axis.title.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.x = element_blank(),
+        strip.text.y = element_text(angle = 0, size = 10),
+        plot.title = element_text(hjust = 0.5, size = 12, face = "bold"),
+        plot.subtitle = element_text(hjust = 1, size = 8),
+        plot.caption = element_text(hjust = 0.5))
+
+print(homem_dom_sexo)
+
+
+```
+
+::: {style="text-align: justify"}
+Nestas figuras, também é possível perceber que, assim como os homens, as mulheres também se mostraram muito favoráveis à sua maior participação nos trabalhos realizados dentro de casa. Quando perguntadas a respeito da necessidade de que os homens participem mais da realização dos afazeres domésticos e dos cuidados com as crianças, as mulheres que concordaram totalmente com a afirmação somaram 64,37% e 72,83%, respectivamente.
+
+Mais uma vez, percebe-se, portanto, a existência de uma nova expectiva sobre os homens, principalmente, aqueles que são pais, apesar de ainda não terem ajustado seus comportamentos.
+:::
+
+```{r HomensCuidarMais}
+
+# Distribuição relativa de brasileiros casados de acordo com a grau de concordância com a frase "Homens deveriam participar mais do cuidado com as crianças" por sexo
+
+homem_cuidado_sexo <- brasil_casados_vs %>% 
+  filter(!is.na(homem_cuidado)) %>% 
+  group_by(sexo, homem_cuidado) %>% 
+  summarise(n = n()) %>% 
+  mutate(freq_homem_cuidado = n*100/sum(n)) %>% 
+  ggplot(aes(x = sexo, y = freq_homem_cuidado, fill = sexo)) +
+  geom_bar(stat = "identity", show.legend = TRUE) +
+  facet_grid(homem_cuidado ~., labeller = as_labeller(opiniao_labeller, label_wrap_gen(width = 15, )))+
+  coord_flip() +
+  ylim(c(0, 90)) +
+  geom_text(aes(label = round(freq_homem_cuidado, 2)), hjust = -.1) +
+  scale_fill_manual(label = c("Masculino", "Feminino"), values = c("lightblue3", "hotpink1")) +
+  theme(strip.text = element_text(size = 12)) +
+  labs(title = "Figura 13 - Distribuição relativa dos brasileiros casados \n acordo com seu grau de concordância com a frase \n\"Os homens deveriam cuidar mais das \ncrianças do que cuidam atualmente\", por sexo",
+       fill = "Sexo",
+       caption = "Fonte: ISSP, 2002.")+
+  theme_minimal() +
+  theme(plot.background = element_blank(),
+        axis.title.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.title.x = element_blank(),
+        strip.text.y = element_text(angle = 0),
+        plot.title = element_text(size = 12, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(hjust = 1),
+        plot.caption = element_text(hjust = 0.5))
+
+print(homem_cuidado_sexo)
+
+
+```
+
+## Considerações finais
+
+::: {style="text-align: justify"}
+Ao longo deste relatório, procurei identificar se, no Brasil do início do Século XXI, lugar de mulher ainda é na cozinha. Para tanto, utilizei os dados do módulo *Family and Changing Gender Values*, coletados como parte do ISSP durante 2002.
+
+Considerando que, segundo a literatura sobre a divisão dos afazeres domésticos e de cuidado não remunerados, o casamento é a instituição generificada por excelência e o Brasil é um caso paradigmático, apenas mantive brasileiros casados na amostra selecionada.
+
+Em todas as figuras relativas às crenças de gênero aqui apresentadas, observamos que os polos mais extremos de concordância e discordância se destacaram em relação aos intermediários, no sentido de apresentarem as maiores frequências relativas tanto para homens quanto para mulheres.
+
+A partir da leitura das mesmas, é possível afirmar que, embora, naquele ano, houvesse uma grande aceitação do fato de que mulheres poderiam trabalhar fora de seus domicílios, as atividades não remuneradas que elas realizam, neste espaço, continuavam sendo vistas como seus principais objetivos de vida. Além disto, também verificamos que havia uma grande demanda para que homens participassem mais da realização destas tarefas. Tais resultados, portanto, reforçam a ideia de que, se, por um lado, as mulheres avançaram consideravelmente na ocupação do espaço público, a partir de sua maior inserção no mercado de trabalho, por outro, ainda havia muito o que ser conquistado no espaço privado, no interior dos domicílios.
+:::
+
+## Para saber mais: dicas de leituras
+
+::: {style="text-align: justify"}
+ARAÚJO, Clara; PICANÇO, Felícia; CANO, Ignácio. *Onde as desigualdades de gênero se escondem? Gênero e divisão do trabalho doméstico - o Brasil em perspectiva comparada.* 1. ed. Rio de Janeiro: Gramma, 2019.
+
+BIANCHI, Suzanne M. *et al.* *Is anyone doing the housework? trends in the gender division of household labor*. *Social Forces*. \\\[S.l: s.n.\\\]. Disponível em: <https://www.jstor.org/stable/2675569>. , 2000.
+
+ESPING-ANDERSEN, Gøsta. *Families in the 21st Century*. Stockholm: SNS FÖRLAG, 2016.
+
+FUWA, Makiko. Macro-level gender inequality and the division of household labor in 22 countries. *American Sociological Review*, 2004.
+
+GUIMARÃES, Nadya Araujo; HIRATA, Helena Sumiko. *O Gênero do Cuidado: desigualdades, significações e identidades*. 1. ed. Cotia: Ateliê Editorial, 2020.
+
+HEILBORN, Maria Luiza. *Dois é par: Gênero e identidade sexual em contexto igualitário*. 1. ed. Rio de Janeiro: Editora Garamond, 2004.
+
+HOCHSCHILD, Arlie; MACHUNG, Anne. *The Second Shift: Working Families and the Revolution at Home*. 3. ed. New York: Penguin Books, 2012.
+
+ITABORAÍ, Natalie Reis; RICOLDI, Arlene Martinez. *Até onde caminhou a revolução de gênero no Brasil? Implicações demográficas e questões sociais*. Belo Horizonte: ABEP, 2016. Disponível em: <http://www.abep.org.br/publicacoes/index.php/ebook/issue/view/40>.
+
+JESUS, Jordana Cristina De. Trabalho doméstico não remunerado no Brasil: uma análise de produção, consumo e transferência. *UFMG/Cedeplar*, p. 120, 2018. Disponível em: <https://repositorio.ufmg.br/bitstream/1843/FACE-B27PW9/1/ppgdemografia_jordanacristinajesus_tesedoutorado.pdf%0Ahttp://hdl.handle.net/1843/FACE-B27PW9>.
+
+KITTAY, Eva Feder. *Love's labor: Essays on women, equality and dependency*. New York and London: Routledge, 2013.
+
+SINGLETON, Andrew; MAHER, Janemaree. The "New Man" Is in the House: Young Men, Social Change, and Housework. *The Journal of Men's Studies*, 2004.
+:::
